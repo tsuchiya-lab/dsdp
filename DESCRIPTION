@@ -23,11 +23,11 @@ LazyData: true
 Suggests: 
     rmarkdown,
     knitr
-VignetteBuilder: knitr, rmarkdown
+VignetteBuilder: knitr, rmarkdown, bookdown
 Imports: 
     ggplot2,
     rlang,
     stats
 License: MIT + file LICENSE
-URL: https://github.com/tsuchiya-lab/dsdp/
+URL: URL: https://tsuchiya-lab.github.io/dsdp/
 BugReports: https://github.com/tsuchiya-lab/dsdp/issues
