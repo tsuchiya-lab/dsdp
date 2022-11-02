@@ -1,0 +1,33 @@
+Package: dsdp
+Title: Density Estimation with Semidefinte Programming
+Version: 0.1.0.9002
+Authors@R: c(
+    person("Satoshi", "Kakihara",email = "skakihara@gmail.com",
+        role = c("aut", "cre")),
+    person("Takashi",  "Tsuchiya", email = "tsuchiya@grips.ac.jp",
+        role = "aut"))
+Description: Density estimation with Semidefinte Programming.
+    The models of probability density functions are Gaussian or exponential
+    distributions with polynomial correction terms. Using a maximum likelihood
+    method, it computes parameters of Gaussian or exponential distributions
+    together with degrees of polynomials by a grid search, and coefficients
+    of polynomials by a variant of semidefinite programming.
+    It adopts Akaike Infomation Criterion for model selection.
+    See vignettes for tutorials and more information.
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Suggests: 
+    rmarkdown,
+    knitr
+VignetteBuilder: knitr, rmarkdown
+Imports: 
+    ggplot2,
+    rlang,
+    stats
+License: MIT + file LICENSE
+URL: https://github.com/tsuchiya-lab/dsdp/
+BugReports: https://github.com/tsuchiya-lab/dsdp/issues
