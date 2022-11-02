@@ -8,6 +8,9 @@
 [![CRAN
 status](https://www.r-pkg.org/badges/version/dsdp)](https://CRAN.R-project.org/package=dsdp)
 [![R-CMD-check](https://github.com/tsuchiya-lab/dsdp/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tsuchiya-lab/dsdp/actions/workflows/R-CMD-check.yaml)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+![GitHub](https://img.shields.io/github/license/tsuchiya-lab/dsdp)
 <!-- badges: end -->
 
 The goal of dsdp is to estimate probability density functions from a

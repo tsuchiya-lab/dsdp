@@ -21,6 +21,7 @@ Depends:
     R (>= 2.10)
 LazyData: true
 Suggests: 
+    bookdown,
     rmarkdown,
     knitr
 VignetteBuilder: knitr, rmarkdown, bookdown
@@ -29,5 +30,5 @@ Imports:
     rlang,
     stats
 License: MIT + file LICENSE
-URL: URL: https://tsuchiya-lab.github.io/dsdp/
+URL: https://tsuchiya-lab.github.io/dsdp/
 BugReports: https://github.com/tsuchiya-lab/dsdp/issues
