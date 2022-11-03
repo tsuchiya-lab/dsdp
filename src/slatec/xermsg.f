@@ -322,7 +322,7 @@ C       IF LKNTRL IS POSITIVE, WRITE THE ERROR NUMBER AND REQUEST A
 C          TRACEBACK.
 C
       IF (LKNTRL .GT. 0) THEN
-         WRITE (TEMP, '(''ERROR NUMBER = '', I8)') NERR
+!         WRITE (TEMP, '(''ERROR NUMBER = '', I8)') NERR
          DO 10 I=16,22
             IF (TEMP(I:I) .NE. ' ') GO TO 20
    10    CONTINUE
