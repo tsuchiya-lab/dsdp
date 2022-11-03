@@ -93,7 +93,7 @@ C
 C
 C           Print number of other errors.
 C
-            IF (KOUNTX.NE.0) WRITE (IUNIT,9020) KOUNTX
+!            IF (KOUNTX.NE.0) WRITE (IUNIT,9020) KOUNTX
 !            WRITE (IUNIT,9030)
    20    CONTINUE
 C
