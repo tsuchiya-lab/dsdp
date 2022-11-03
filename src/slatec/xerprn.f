@@ -219,9 +219,9 @@ C
 C
 C       PRINT
 C
-      DO 60 I=1,NUNIT
-         WRITE(IU(I), '(A)') CBUFF(1:LPREF+LPIECE)
-   60 CONTINUE
+!      DO 60 I=1,NUNIT
+!         WRITE(IU(I), '(A)') CBUFF(1:LPREF+LPIECE)
+!   60 CONTINUE
 C
       IF (NEXTC .LE. LENMSG) GO TO 50
       RETURN

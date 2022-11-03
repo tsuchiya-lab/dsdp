@@ -202,11 +202,11 @@ C          AND THE LEVEL SHOULD BE BETWEEN 0 AND 2.
 C
       IF (NERR.LT.-9999999 .OR. NERR.GT.99999999 .OR. NERR.EQ.0 .OR.
      *   LEVEL.LT.-1 .OR. LEVEL.GT.2) THEN
-         CALL XERPRN (' ***', -1, 'FATAL ERROR IN...$$ ' //
-     *      'XERMSG -- INVALID ERROR NUMBER OR LEVEL$$ '//
-     *      'JOB ABORT DUE TO FATAL ERROR.', 72)
-         CALL XERSVE (' ', ' ', ' ', 0, 0, 0, KDUMMY)
-         CALL XERHLT (' ***XERMSG -- INVALID INPUT')
+!         CALL XERPRN (' ***', -1, 'FATAL ERROR IN...$$ ' //
+!     *      'XERMSG -- INVALID ERROR NUMBER OR LEVEL$$ '//
+!     *      'JOB ABORT DUE TO FATAL ERROR.', 72)
+!         CALL XERSVE (' ', ' ', ' ', 0, 0, 0, KDUMMY)
+!         CALL XERHLT (' ***XERMSG -- INVALID INPUT')
          RETURN
       ENDIF
 C
