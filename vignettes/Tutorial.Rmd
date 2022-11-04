@@ -194,7 +194,7 @@ mulist <- c(-0.5, 0, 0.5)
 sdlist <- c(0.75, 1.0, 1.25)
 ```
 
-`deglist` is a vector of degrees of polynomials, in this case
+A vector `deglist` indicates degrees of polynomials, in this case
 `2, 4, 6`. In Gaussian-based model, a positive even integer up to around
 20 is okay. Note that large degrees can cause numerical difficulty.
 `mulist` is a vector of means of Gaussian distribution, and
@@ -278,7 +278,7 @@ By setting `scaling=TRUE`, it can plot a scaled data as well as scaled graphs.
 plot(gm1, scaling=TRUE)
 ```
 
-Similary, in the legend, the color of graphs are displayed 
+Similarly, in the legend, the color of graphs are displayed 
 in increasing order of AIC.
 For example, in this graph, the estimation with the degree 6, mean 0.5,
 standard deviation 0.75 is the best one.
@@ -291,15 +291,14 @@ Here `seq` command generates the vector starting from 0, incrementing by 0.1,
 and ending with 0.5, 
 in case of `seq(0, 0.5, by=0.1)`.
 
-Note that parameters already estimated are skipped in `estimate.gaussmodel`.
-
 ```{r eval=TRUE, results="hide", message=FALSE}
 ## Do estimation
 ## Output messages are suppressed for brevity
 gm1 <- estimate(gm1, c(4, 6, 8), seq(0, 0.5, by=0.1), seq(0.5, 1, by=0.1),
         scaling=TRUE)
 ```
-Here We omit argument names.
+Note that parameters already estimated are skipped in `estimate.gaussmodel`
+and we omit argument names.
 
 The summary of estimation is displayed:
 
@@ -308,7 +307,7 @@ The summary of estimation is displayed:
 summary(gm1, nmax=5, estonly=TRUE)
 ```
 
-The graphs are:
+The graphs are displayed:
 ```{r, eval=TRUE, out.height="80%", out.width="70%"}
 plot(gm1)
 ```
@@ -336,7 +335,7 @@ and set `mulist=seq(0, 0.2, by=0.025)` and `sdlist=seq(0.7, 0.8, by=0.01)`.
 ```{r eval=TRUE, results="hide", message=FALSE}
 ## Do estimation
 ## Output messages are suppressed for brevity
-gm1 <- estimate(gm1, 4, seq(0, 0.2, by=0.025), seq(0.7, 0.8, by=0.01),
+gm1 <- estimate(gm1, c(4, 6, 8), seq(0, 0.2, by=0.025), seq(0.7, 0.8, by=0.01),
           scaling=TRUE)
 ```
 
