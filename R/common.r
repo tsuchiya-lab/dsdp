@@ -117,3 +117,7 @@ histmean <- function(data, freq = NULL) .Call(rhistmean_, data, freq)
 #' @param ... Any number of arguments to be printed
 #' @export
 printf <- function(...) cat(sprintf(...))
+
+nearlyequal <- function(x, y, eps=1e-6) {
+  abs(x - y) <= eps
+}

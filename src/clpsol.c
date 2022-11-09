@@ -986,7 +986,7 @@ void init_point(const dataCLP *data, const CLPinfo *clpinfo,
         for (size_t j=0; j<m; ++j)
         {
             double Acnorm = F77_NAME(dnrm2)(&nLP, &(ALP[j*nLP]), &incx);
-            txi = fmax(txi, (1.0+abs(b[j])/(1.0+Acnorm)));
+            txi = fmax(txi, (1.0+fabs(b[j])/(1.0+Acnorm)));
             teta = fmax(teta, Acnorm);
         }
         xi_LP = fmax(10.0, fmax(sqrt((double)nLP), sqrt((double)nLP)*txi));
@@ -1012,7 +1012,7 @@ void init_point(const dataCLP *data, const CLPinfo *clpinfo,
             for (size_t j=0; j<m; ++j)
             {
                 double Asnorm = F77_NAME(dnrm2)(&n2, &(S[j*n2]), &incx);
-                txi = fmax(txi, (1.0+abs(b[j])/(1.0+Asnorm)));
+                txi = fmax(txi, (1.0+fabs(b[j])/(1.0+Asnorm)));
                 teta = fmax(teta, Asnorm);
             }
 

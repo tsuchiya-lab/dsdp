@@ -467,7 +467,7 @@ estimate.expmodel <- function(model, deglist=deglist, lmdlist=lmdlist,
         for (k in 1:len_estdf) {
             d1 <- estdf[k, "deg"]
             lmd1 <- estdf[k, "lmd"]
-            tbool <- resultdf$deg == d1 & resultdf$lmd == lmd1
+            tbool <- resultdf$deg == d1 & nearlyequal(resultdf$lmd, lmd1)
             if (any(tbool)) {
                 estdfidx[k] <- FALSE
             }
@@ -520,7 +520,7 @@ estimate.expmodel <- function(model, deglist=deglist, lmdlist=lmdlist,
         for (k in 1:len_estdf) {
             d1 <- estdf[k, "deg"]
             lmd1 <- estdf[k, "lmd"]
-            tbool <- resultdf$deg == d1 & resultdf$lmd == lmd1
+            tbool <- resultdf$deg == d1 & nearlyequal(resultdf$lmd, lmd1)
 
             if (any(tbool)) {
                 l <- which(tbool)

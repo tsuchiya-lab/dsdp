@@ -273,7 +273,7 @@ In the legend, the color of graphs are displayed in increasing order of AIC.
 For example, in this graph, the estimation with the degree 6, mean  0.96151,
 standard deviation 0.76680 is the best one.
 
-By setting `scaling=TRUE`, it can plot a scaled data as well as scaled graphs.
+By setting `scaling=TRUE`, it can plot a scaled data, like scaled graphs.
 ```{r, eval=TRUE, out.height="80%", out.width="70%"}
 plot(gm1, scaling=TRUE)
 ```
@@ -347,10 +347,33 @@ summary(gm1, nmax=5, estonly=TRUE)
 ```{r, eval=TRUE, out.height="80%", out.width="70%"}
 plot(gm1)
 ```
-We stop doing estimation here. 
-In our heuristics, if we can confine up to 0.01 in `sdlist`, we can achieve
-reasonable estimates.
 
+We stop doing estimation here. 
+<!-- In our heuristics, if we can confine up to 0.01 in `sdlist`, we can achieve
+reasonable estimates. -->
+
+### Some Notes
+Using `plot.gaussmodel`, we can plot cumulative distribution functions
+by `cum=TRUE`:
+
+```{r, eval=TRUE, out.height="80%", out.width="70%"}
+plot(gm1, cum=TRUE, nmax=1)
+```
+
+For more details, see `?plot.gaussmodel`.
+
+`func.gaussmodel` computes the values of density and cumulative distribution of
+desired estimate. For example,
+```{r, eval=TRUE, out.height="80%", out.width="70%"}
+x <- seq(-4, 4, by=0.1)
+## Compute the density of 1st estimate
+y_pdf <- func(gm1, x, n=1)
+## Compute the cumulative distribution of 1st estimate
+y_cdf <- func(gm1, x, cdf=TRUE, n=1)
+```
+
+Of course, we can compute the desired estimate by designating `n=k` for kth 
+estimate shown in `summary.gaussmodel`.
 
 ## Exponential-based Model
 The density function of Exponential-based model is
@@ -434,7 +457,7 @@ lmdlist <- c(0.5, 1, 2, 4)
 `lmdlist` is a vector of means of exponential distributions,
 so the element of `lmdlist` should be positive.
 
-Note that the rate parameters to be passed to 
+Also note that the rate parameters to be passed to 
 an `estimate.expmodel` method are applied to
 internally scaled data, not original data.
 
@@ -460,42 +483,77 @@ summary(em1, nmax=5, estonly=TRUE)
 ```
 (`nmax=5` limits top 5 estimates, and `estonly=TRUE` suppresses the basic statistics.)
 
-See  the histogram.
+Next see  the histogram.
 ```{r, eval=TRUE, out.height="80%", out.width="70%"}
 plot(em1)
 ```
 
 ### Refine estimation
+We continue to estimate further by adding parameters.
+As we see in `estimate.gaussmodel`,  paramters already estimated are
+skipped.
 ```{r eval=TRUE, results="hide", message=FALSE}
 ## Do estimation
 ## Output messages are suppressed for brevity
 em1 <- estimate(em1, c(3, 4, 5, 6), c(1, 2, 4, 8))
 ```
+
+The summary of the estimation is:
 ```{r eval=TRUE}
 ## Show the summary of results up to 5
 summary(em1, nmax=5, estonly=TRUE)
 ```
-From the above result, it is 
+The graphs are:
 ```{r, eval=TRUE, out.height="80%", out.width="70%"}
 plot(em1)
 ```
-```{r eval=TRUE, results="hide", message=FALSE}
+
+<!-- ```{r eval=TRUE, results="hide", message=FALSE}
 ## Do estimation
 ## Output messages are suppressed for brevity
 em1 <- estimate(em1, c(5, 6, 7), c(2, 3, 4))
-```
+``` -->
 
+We further confine parameters as follows:
 ```{r eval=TRUE, results="hide", message=FALSE}
 ## Do estimation
 ## Output messages are suppressed for brevity
 em1 <- estimate(em1, c(5, 6), seq(3, 4, by=0.25))
 ```
 
+And see the summary of estimation:
 ```{r eval=TRUE}
 ## Show the summary of results up to 5
 summary(em1, nmax=5, estonly=TRUE)
 ```
-From the above result, it is 
+
+The graphs are as follows:
 ```{r, eval=TRUE, out.height="80%", out.width="70%"}
 plot(em1)
 ```
+
+Theoretically, we can refine estimation as you like, but
+we stop estimation here.
+
+### Some Notes
+Using `plot.expmodel`, we can plot cumulative distribution functions
+by `cum=TRUE`:
+
+```{r, eval=TRUE, out.height="80%", out.width="70%"}
+plot(em1, cum=TRUE, nmax=1)
+```
+
+For more details, see `?plot.expmodel`.
+
+`func.expmodel` computes the values of density and cumulative distribution of
+desired estimate. For example,
+```{r, eval=TRUE, out.height="80%", out.width="70%"}
+x <- seq(0, 14, by=0.1)
+## Compute the density of 1st estimate
+y_pdf <- func(em1, x, n=1)
+## Compute the cumulative distribution of 1st estimate
+y_cdf <- func(em1, x, cdf=TRUE, n=1)
+```
+
+Of course, we can compute the desired estimate by designating `n=k` for kth 
+estimate shown in `summary.expmodel`.

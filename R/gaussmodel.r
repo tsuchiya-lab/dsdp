@@ -678,8 +678,9 @@ estimate.gaussmodel <- function(model, deglist=deglist, mulist=mulist,
                 d1 <- estdf[k, "deg"]
                 mu1 <- estdf[k, "mu"]
                 sig1 <- estdf[k, "sig"]
-                tbool <- resultdf$deg == d1 & resultdf$mu == mu1 &
-                            resultdf$sig == sig1
+                tbool <- resultdf$deg == d1 &
+                            nearlyequal(resultdf$mu, mu1) &
+                            nearlyequal(resultdf$sig, sig1)
                 if (any(tbool)) {
                     estdfidx[k] <- FALSE
                 }
@@ -735,8 +736,9 @@ estimate.gaussmodel <- function(model, deglist=deglist, mulist=mulist,
                 d1 <- estdf[k, "deg"]
                 mu1 <- estdf[k, "mu"]
                 sig1 <- estdf[k, "sig"]
-                tbool <- resultdf$deg == d1 & resultdf$mu1 == mu1 &
-                            resultdf$sig1 == sig1
+                tbool <- resultdf$deg == d1 &
+                            nearlyequal(resultdf$mu1, mu1) &
+                            nearlyequal(resultdf$sig1, sig1)
                 if (any(tbool)) {
                     estdfidx[k] <- FALSE
                 }
@@ -803,8 +805,9 @@ estimate.gaussmodel <- function(model, deglist=deglist, mulist=mulist,
                 d1 <- estdf[k, "deg"]
                 mu1 <- estdf[k, "mu"]
                 sig1 <- estdf[k, "sig"]
-                tbool <- resultdf$deg == d1 & resultdf$mu == mu1 &
-                            resultdf$sig == sig1
+                tbool <- resultdf$deg == d1 &
+                            nearlyequal(resultdf$mu, mu1) &
+                            nearlyequal(resultdf$sig, sig1)
 
                 if (any(tbool)) {
                 # previously computed.
@@ -914,8 +917,9 @@ estimate.gaussmodel <- function(model, deglist=deglist, mulist=mulist,
                 d1 <- estdf[k, "deg"]
                 mu1 <- estdf[k, "mu"]
                 sig1 <- estdf[k, "sig"]
-                tbool <- resultdf$deg == d1 & resultdf$mu1 == mu1 &
-                            resultdf$sig1 == sig1
+                tbool <- resultdf$deg == d1 &
+                            nearlyequal(resultdf$mu1, mu1) &
+                            nearlyequal(resultdf$sig1, sig1)
 
                 if (any(tbool)) {
                 # previously computed.

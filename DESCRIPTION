@@ -1,6 +1,6 @@
 Package: dsdp
 Title: Density Estimation with Semidefinte Programming
-Version: 0.1.0.9002
+Version: 0.1.0
 Authors@R: c(
     person("Satoshi", "Kakihara",email = "skakihara@gmail.com",
         role = c("aut", "cre")),
