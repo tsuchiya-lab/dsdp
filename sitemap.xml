@@ -1,147 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/404.html</loc>
   </url>
   <url>
-    <loc>/LICENSE-text.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/articles/ProblemFormulations.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/articles/ProblemFormulations.html</loc>
   </url>
   <url>
-    <loc>/articles/Tutorial.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/articles/Tutorial.html</loc>
   </url>
   <url>
-    <loc>/articles/index.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/articles/index.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/index.html</loc>
   </url>
   <url>
-    <loc>/news/index.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/cdf_expmodel.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/cdf_expmodel.html</loc>
   </url>
   <url>
-    <loc>/reference/cdf_gaussmodel.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/cdf_gaussmodel.html</loc>
   </url>
   <url>
-    <loc>/reference/databinning.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/databinning.html</loc>
   </url>
   <url>
-    <loc>/reference/datastats.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/datastats.html</loc>
   </url>
   <url>
-    <loc>/reference/dsdp.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/dsdp.html</loc>
   </url>
   <url>
-    <loc>/reference/estimate.expmodel.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/estimate.expmodel.html</loc>
   </url>
   <url>
-    <loc>/reference/estimate.gaussmodel.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/estimate.gaussmodel.html</loc>
   </url>
   <url>
-    <loc>/reference/estimate.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/estimate.html</loc>
   </url>
   <url>
-    <loc>/reference/eval_poly.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/eval_poly.html</loc>
   </url>
   <url>
-    <loc>/reference/exp_est.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/exp_est.html</loc>
   </url>
   <url>
-    <loc>/reference/expmodel.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/expmodel.html</loc>
   </url>
   <url>
-    <loc>/reference/func.expmodel.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/func.expmodel.html</loc>
   </url>
   <url>
-    <loc>/reference/func.gaussmodel.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/func.gaussmodel.html</loc>
   </url>
   <url>
-    <loc>/reference/func.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/func.html</loc>
   </url>
   <url>
-    <loc>/reference/gauss_est.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/gauss_est.html</loc>
   </url>
   <url>
-    <loc>/reference/gaussmodel.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/gaussmodel.html</loc>
   </url>
   <url>
-    <loc>/reference/histmean.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/histmean.html</loc>
   </url>
   <url>
-    <loc>/reference/igamma.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/igamma.html</loc>
   </url>
   <url>
-    <loc>/reference/igammac.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/igammac.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/mix2gauss.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/mix2gauss.html</loc>
   </url>
   <url>
-    <loc>/reference/mix2gaussHist.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/mix2gaussHist.html</loc>
   </url>
   <url>
-    <loc>/reference/mix2gauss_fun.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/mix2gauss_fun.html</loc>
   </url>
   <url>
-    <loc>/reference/mix2gauss_gen.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/mix2gauss_gen.html</loc>
   </url>
   <url>
-    <loc>/reference/mix3gauss.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/mix3gauss.html</loc>
   </url>
   <url>
-    <loc>/reference/mix3gauss_fun.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/mix3gauss_fun.html</loc>
   </url>
   <url>
-    <loc>/reference/mix3gauss_gen.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/mix3gauss_gen.html</loc>
   </url>
   <url>
-    <loc>/reference/mixExpGammaHist.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/mixExpGammaHist.html</loc>
   </url>
   <url>
-    <loc>/reference/mixexpgamma.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/mixexpgamma.html</loc>
   </url>
   <url>
-    <loc>/reference/mixexpgamma_fun.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/mixexpgamma_fun.html</loc>
   </url>
   <url>
-    <loc>/reference/mixexpgamma_gen.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/mixexpgamma_gen.html</loc>
   </url>
   <url>
-    <loc>/reference/pdf_expmodel.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/pdf_expmodel.html</loc>
   </url>
   <url>
-    <loc>/reference/pdf_gaussmodel.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/pdf_gaussmodel.html</loc>
   </url>
   <url>
-    <loc>/reference/plot.expmodel.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/plot.expmodel.html</loc>
   </url>
   <url>
-    <loc>/reference/plot.gaussmodel.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/plot.gaussmodel.html</loc>
   </url>
   <url>
-    <loc>/reference/polyaxb.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/polyaxb.html</loc>
   </url>
   <url>
-    <loc>/reference/printf.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/printf.html</loc>
   </url>
   <url>
-    <loc>/reference/summary.expmodel.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/summary.expmodel.html</loc>
   </url>
   <url>
-    <loc>/reference/summary.gaussmodel.html</loc>
+    <loc>https://tsuchiya-lab.github.io/dsdp/reference/summary.gaussmodel.html</loc>
   </url>
 </urlset>
