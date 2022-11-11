@@ -29,6 +29,7 @@ reference:
   contents:
   - estimate
   - func
+  - dsdp
 
 - title: Miscellaneous Functions
   contents:
