@@ -25,12 +25,6 @@ reference:
   - pdf_expmodel
   - cdf_expmodel
 
-- title: Generic Functions
-  contents:
-  - estimate
-  - func
-  - dsdp
-
 - title: Miscellaneous Functions
   contents:
   - databinning
@@ -41,6 +35,11 @@ reference:
   - printf
   - igamma
   - igammac
+
+- title: Generic Functions
+  contents:
+  - estimate
+  - func
 
 - title: Dataset and Related Functions
   contents:
@@ -55,3 +54,7 @@ reference:
   - mixExpGammaHist
   - mixexpgamma_fun
   - mixexpgamma_gen
+
+- title: Package Description
+  contents:
+  - dsdp
