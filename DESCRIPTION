@@ -1,5 +1,5 @@
 Package: dsdp
-Title: Density Estimation with Semidefinte Programming
+Title: Density Estimation with Semidefinite Programming
 Version: 0.1.0
 Authors@R: c(
     person("Satoshi", "Kakihara",email = "skakihara@gmail.com",
