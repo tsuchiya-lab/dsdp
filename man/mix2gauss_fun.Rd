@@ -2,7 +2,7 @@
 % Please edit documentation in R/auxiliaries.r
 \name{mix2gauss_fun}
 \alias{mix2gauss_fun}
-\title{A density function of a mixed gaussian distribution}
+\title{A density function of mixed Gaussian distributions}
 \usage{
 mix2gauss_fun(x)
 }
@@ -13,10 +13,13 @@ mix2gauss_fun(x)
 A numeric vector of probabilities for a given argument \code{x}.
 }
 \description{
-A density function of a mixed gaussian distribution:
-\deqn{\frac{0.3}{\sqrt{2 \pi 0.5^2}}\exp(\frac{(x+1)^2}{2 \cdot 0.5^2}) +
-\frac{0.7}{\sqrt{2 \pi 0.5^2}}\exp(\frac{(x-1)^2}{2 \cdot 0.5^2}).}
+A density function of mixed Gaussian distributions
+whose density is:
+\deqn{\frac{0.3}{\sqrt{2 \pi 0.5^2}}
+\exp\left(\frac{(x+1)^2}{2 \cdot 0.5^2}\right) +
+\frac{0.7}{\sqrt{2 \pi 0.5^2}}
+\exp\left(\frac{(x-1)^2}{2 \cdot 0.5^2}\right)}.
 }
 \seealso{
-mix2gauss_gen
+\code{\link[=mix2gauss_gen]{mix2gauss_gen()}}
 }

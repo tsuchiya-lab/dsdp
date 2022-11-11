@@ -19,13 +19,13 @@
 \arguments{
 \item{model}{An object of a \code{gaussmodel} class.}
 
-\item{deglist}{A vector of degrees of polynomials. They should be positive
-even numbers.}
+\item{deglist}{A vector of degrees of polynomials. The element should be
+positive even numbers.}
 
 \item{mulist}{A vector of means for Gaussian-based models.}
 
 \item{sdlist}{A vector of standard deviations for Gaussian-based models.
-They should be larger than 0.}
+The element should be larger than 0.}
 
 \item{scaling}{A logical scalar, which indicates whether or not it scales
 means and standard deviations in \code{mulist} and \code{sdlist}.
@@ -36,11 +36,10 @@ estimation and accuracy. Parameters whose accuracies had been already
 attained sufficiently, namely around 1.0e-6, are not included in candidates
 for recomputing.}
 
-\item{stepsize}{A vector in descending order whose values are between 0 and
-\enumerate{
-\item If a small step size is supplied, it can attain successful estimates,
-but it might take more iterations.
-}}
+\item{stepsize}{A vector in descending order whose values are
+between 0 and 1.
+If a small step size is supplied, it can attain successful estimates,
+but it might take more iterations.}
 
 \item{verbose}{If \code{TRUE}, it shows the detailed message of SDP solver.}
 
@@ -48,8 +47,8 @@ but it might take more iterations.
 }
 \value{
 A \code{gaussmodel} object including the estimates.
-Those estimates are stored in \code{model$result} with \code{data.frame}
-form and \code{model$coeffs} in \code{list} form.
+Those estimates are stored in \code{model$result} with
+\code{data.frame} format and \code{model$coeffs} in \code{list} format.
 }
 \description{
 Estimates Gaussian-based model \code{gaussmodel} among
@@ -61,8 +60,8 @@ Then it sorts the results by AIC.
 gmodel <- gaussmodel(mix2gauss$n200)
 ## Estimate a model with parameters
 gmodel <- estimate(gmodel, deglist=c(2, 4), mulist=c(0.0, 0.2),
-             sdlist=c(0.75, 1.0, 1.25))
+             sdlist=c(0.75, 1.0))
 }
 \seealso{
-gaussmodel summary.gaussmodel plot.gaussmodel
+\code{\link[=gaussmodel]{gaussmodel()}} \code{\link[=summary.gaussmodel]{summary.gaussmodel()}} \code{\link[=plot.gaussmodel]{plot.gaussmodel()}}
 }

@@ -27,5 +27,5 @@ datastats(mix2gauss$n200)
 datastats(mix2gaussHist$n200p, mix2gaussHist$n200f)
 }
 \seealso{
-histmean
+\code{\link[=histmean]{histmean()}}
 }

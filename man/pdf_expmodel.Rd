@@ -41,6 +41,6 @@ x <- seq(0, 12, 0.1)
 yv <- pdf_expmodel(emodel$coeffs[[1]], emodel$result[1, "lmd1"], x)
 }
 \seealso{
-expmodel summary.expmodel estimate.expmodel func.expmodel
-plot.expmodel cdf_expmodel
+\code{\link[=expmodel]{expmodel()}} \code{\link[=summary.expmodel]{summary.expmodel()}} \code{\link[=estimate.expmodel]{estimate.expmodel()}}
+\code{\link[=func.expmodel]{func.expmodel()}} \code{\link[=plot.expmodel]{plot.expmodel()}} \code{\link[=cdf_expmodel]{cdf_expmodel()}}
 }

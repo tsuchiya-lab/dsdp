@@ -17,22 +17,21 @@
 \arguments{
 \item{model}{An object of \code{expmodel} class.}
 
-\item{deglist}{A vector of degrees of polynomials. They should be
+\item{deglist}{A vector of degrees of polynomials. The element should be
 positive integers.}
 
 \item{lmdlist}{A vector of rate parameters of Exponential-based models.
-They should be larger than 0.}
+The element should be larger than 0.}
 
 \item{recompute}{If \code{TRUE}, recomputes the results for
 better estimation and accuracy. Parameters whose accuracies had been already
 attained sufficiently, namely around 1.0e-6, are not included in candidates
 for recomputing.}
 
-\item{stepsize}{A vector in descending order whose values are between 0 and
-\enumerate{
-\item If a small step size is supplied, it can attain successful estimates,
-but it might take more iterations.
-}}
+\item{stepsize}{A vector in descending order whose values are
+between 0 and 1.
+If a small step size is supplied, it can attain successful estimates,
+but it might take more iterations.}
 
 \item{verbose}{If \code{TRUE}, it shows the detailed message of SDP solver.}
 
@@ -40,8 +39,8 @@ but it might take more iterations.
 }
 \value{
 A \code{expmodel} object including the estimates.
-Those estimates are stored in \code{model$result} with \code{data.frame}
-form and \code{model$coeffs} in \code{list} form.
+Those estimates are stored in \code{model$result} with
+\code{data.frame} format and \code{model$coeffs} in \code{list} format.
 }
 \description{
 Estimates Exponential-based model \code{expmodel} among
@@ -55,5 +54,5 @@ emodel <- expmodel(mixexpgamma$n200)
 emodel <- estimate(emodel, c(4,5,6), c(0.25, 0.5, 1, 2, 4))
 }
 \seealso{
-expmodel summary.expmodel plot.expmodel
+\code{\link[=expmodel]{expmodel()}} \code{\link[=summary.expmodel]{summary.expmodel()}} \code{\link[=plot.expmodel]{plot.expmodel()}}
 }

@@ -3,31 +3,32 @@
 \docType{data}
 \name{mixExpGammaHist}
 \alias{mixExpGammaHist}
-\title{Mixture of Exponential Distribution and Gamma Distribution,
-histogram version.}
+\title{Dataset of Mixture of Exponential Distribution and Gamma Distribution:
+Histogram Version}
 \format{
 A list of numeric vectors of Mixture of Exponential and Gamma
 distribution Model.
 \describe{
-\item{n200}{200 elements numeric vector}
-\item{n200p}{histogram sample data with bins 25}
-\item{n200f}{histogram frequency data with bins 25}
-\item{n400}{400 elements numeric vector}
-\item{n400p}{histogram sample data with bins 50}
-\item{n400f}{histogram frequency data with bins 50}
-\item{n800}{800 elements numeric vector}
-\item{n800p}{histogram sample data with bins 100}
-\item{n800f}{histogram frequency data with bins 100}
+\item{n200}{A numeric vector with 200 elements.}
+\item{n200p}{Histogram sample data with 25 bins.}
+\item{n200f}{Histogram frequency data with 25 bins.}
+\item{n400}{A numeric vector with 400 elements.}
+\item{n400p}{Histogram sample data with 50 bins.}
+\item{n400f}{Histogram frequency data with 50 bins.}
+\item{n800}{A numeric vector with 800 elements.}
+\item{n800p}{Histogram sample data with 100 bins.}
+\item{n800f}{Histogram frequency data with 100 bins.}
 }
 }
 \source{
-\code{\link{mix2gauss_gen}} \code{\link{databinning}}
+\code{\link[=mix2gauss_gen]{mix2gauss_gen()}} \code{\link[=databinning]{databinning()}}
 }
 \usage{
 mixExpGammaHist
 }
 \description{
-Mixture of Exponential Distribution and Gamma Distribution,
-histogram version.
+Dataset of mixture of exponential distribution and gamma distribution,
+histogram version, whose density is:
+\deqn{0.2(2 e^{-2x}) + 0.8 \frac{x^3}{3!}e^{-x}.}
 }
 \keyword{datasets}

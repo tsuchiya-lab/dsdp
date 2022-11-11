@@ -38,5 +38,5 @@ the information of estimates and coefficients of polynomials, respectively.
  gmodel <- gaussmodel(mix2gaussHist$n200p, mix2gaussHist$n200f)
 }
 \seealso{
-\link{summary.gaussmodel} \link{plot.gaussmodel} \link{estimate.gaussmodel}
+\code{\link[=summary.gaussmodel]{summary.gaussmodel()}} \code{\link[=plot.gaussmodel]{plot.gaussmodel()}} \code{\link[=estimate.gaussmodel]{estimate.gaussmodel()}}
 }

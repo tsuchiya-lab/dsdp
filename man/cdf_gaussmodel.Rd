@@ -2,7 +2,7 @@
 % Please edit documentation in R/gaussmodel.r
 \name{cdf_gaussmodel}
 \alias{cdf_gaussmodel}
-\title{Cumulative density function of Gaussian-based model}
+\title{Cumulative distribution function of Gaussian-based model}
 \usage{
 cdf_gaussmodel(coeff, mu, sig, x)
 }
@@ -18,10 +18,10 @@ of coefficients.}
 \item{x}{A numeric input vector.}
 }
 \value{
-A numeric vector of CDF Gaussian-based model.
+A numeric vector of CDF of Gaussian-based model.
 }
 \description{
-A cumulative density function(CDF) of Gaussian-based model.
+A cumulative distribution function(CDF) of Gaussian-based model.
 To access parameters and coefficients in an object \code{gmodel}
 of a class \code{gaussmodel}, use \code{gmodel$result[k, "mu1"]},
 \code{gmodel$result[k, "sig1"]}, \code{gmodel$coeffs[[k]]} for some index \code{k}.
@@ -40,6 +40,6 @@ yv <- cdf_gaussmodel(gmodel$coeffs[[1]], gmodel$result[1, "mu1"],
  gmodel$result[1, "sig1"], x)
 }
 \seealso{
-gaussmodel summary.gaussmodel estimate.gaussmodel
-func.gaussmodel pdf_gaussmodel
+\code{\link[=gaussmodel]{gaussmodel()}} \code{\link[=summary.gaussmodel]{summary.gaussmodel()}} \code{\link[=estimate.gaussmodel]{estimate.gaussmodel()}}
+\code{\link[=func.gaussmodel]{func.gaussmodel()}} \code{\link[=pdf_gaussmodel]{pdf_gaussmodel()}}
 }

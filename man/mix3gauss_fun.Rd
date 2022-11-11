@@ -13,10 +13,10 @@ mix3gauss_fun(x)
 A numeric vector of probabilities for a given argument \code{x}.
 }
 \description{
-A density function of
+A density function proportional to:
 \deqn{\exp(\frac{x^2}{2}) + 5\exp(\frac{(x-1)^2}{0.2}) +
 3\exp(\frac{(x-1)^2}{0.5}).}
 }
 \seealso{
-\code{\link{mix3gauss_gen}}
+\code{\link[=mix3gauss_gen]{mix3gauss_gen()}}
 }

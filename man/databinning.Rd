@@ -22,5 +22,5 @@ which are representatives of bins and their frequencies, respectively.
 rlst <- databinning(mix2gauss$n200)
 }
 \seealso{
-\code{link[base]{rle}}
+\code{\link[base:rle]{base::rle()}}
 }

@@ -2,3 +2,53 @@ url: https://tsuchiya-lab.github.io/dsdp/
 template:
   bootstrap: 5
 
+reference:
+- title: Gaussian-based Model
+  contents:
+  - gaussmodel
+  - summary.gaussmodel
+  - plot.gaussmodel
+  - estimate.gaussmodel
+  - func.gaussmodel
+  - gauss_est
+  - pdf_gaussmodel
+  - cdf_gaussmodel
+
+- title: Exponential-based Model
+  contents:
+  - expmodel
+  - summary.expmodel
+  - plot.expmodel
+  - estimate.expmodel
+  - func.expmodel
+  - exp_est
+  - pdf_expmodel
+  - cdf_expmodel
+
+- title: Generic Functions
+  - estimate
+  - func
+
+- title: Miscellaneous Functions
+  contents:
+  - databinning
+  - datastats
+  - histmean
+  - eval_poly
+  - polyaxb
+  - printf
+  - igamma
+  - igammac
+
+- title: Dataset and Related Functions
+  - mix2gauss
+  - mix2gaussHist
+  - mix2gauss_fun
+  - mix2gauss_gen
+  - mix3gauss
+  - mix3gauss_fun
+  - mix3gauss_gen
+  - mixexpgamma
+  - mixExpGammaHist
+  - mixexpgamma_fun
+  - mixexpgamma_gen

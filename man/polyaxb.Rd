@@ -44,5 +44,5 @@ yv <- eval_poly(coeff2, xv)
 yv - yv2
 }
 \seealso{
-eval_poly
+\code{\link[=eval_poly]{eval_poly()}}
 }

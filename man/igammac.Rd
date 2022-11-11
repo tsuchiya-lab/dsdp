@@ -9,8 +9,7 @@ igammac(a, x)
 \arguments{
 \item{a}{A numeric vector.}
 
-\item{x}{A nonnegative numeric vector with same length as \code{a}.
-length.}
+\item{x}{A nonnegative numeric vector with same length as \code{a}.}
 }
 \value{
 A vector of values of a complementary incomplete gamma function.
@@ -19,12 +18,12 @@ A vector of values of a complementary incomplete gamma function.
 Evaluate an complementary incomplete gamma function:
 \deqn{\gamma^{*}(a, x) = \int_{x}^{\infty} t^{a-1} e^{-t}dt,}
 using SLATEC \code{dgamic} in \url{https://netlib.org/slatec/}.
-When \eqn{x > 0} or \eqn{x \eq 0} & \eqn{a \ge 0}, compute the result,
-otherwise the value is \code{NaN}.
+When (\eqn{x > 0} and \eqn{a \ge 0}) or (\eqn{x \ge 0} and \eqn{a > 0}),
+compute the result, otherwise the value is \code{NaN}.
 }
 \examples{
 igammac(1, 1)
 }
 \seealso{
-igamma
+\code{\link[=igamma]{igamma()}}
 }

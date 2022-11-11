@@ -18,7 +18,7 @@ A vector of values of a polynomial whose coefficient is \code{coeff}.
 }
 \description{
 Evaluate the polynomial whose coefficients are represented in
-\code{coeff}. The order of the coefficient is an increasing order, i.e.,
+\code{coeff} vector. The order of the coefficient is an increasing order, i.e.,
 \code{coeff[1]} is a constant term, and \code{coeff[2]} is a coefficient of 1st degree
 term, etc. Evaluation is done using Horner's method.
 }
@@ -30,5 +30,6 @@ x <- c(1, 2, 3)
 eval_poly(coeff, x)
 }
 \seealso{
-pdf_gaussmodel pdf_expmodel cdf_gaussmodel cdf_expmodel
+\code{\link[=pdf_gaussmodel]{pdf_gaussmodel()}} \code{\link[=pdf_expmodel]{pdf_expmodel()}} \code{\link[=cdf_gaussmodel]{cdf_gaussmodel()}}
+\code{\link[=cdf_expmodel]{cdf_expmodel()}}
 }

@@ -22,7 +22,7 @@
 #' ## Create `expmodel` object from a data set `mixExpGammaHist$n800p` and
 #' ## its frequencies `mixExpGammaHist$n800f`.
 #'  emodel <- expmodel(mixExpGammaHist$n800p, mixExpGammaHist$n800f)
-#' @seealso summary.expmodel plot.expmodel estimate.expmodel
+#' @seealso [summary.expmodel()] [plot.expmodel()] [estimate.expmodel()]
 #' @export
 expmodel <- function(data=data, freq=NULL, stepsize=c(0.5, 0.3)) {
     dname <- deparse(substitute(data))
@@ -68,7 +68,7 @@ expmodel <- function(data=data, freq=NULL, stepsize=c(0.5, 0.3)) {
         stop("'stepsize' contains NAs.")
     }
     if (!all(stepsize > 0.0 & stepsize <= 0.98)) {
-        stop("'stepsize' is not in (0.0, 0.98].")
+        stop("'stepsize' is not in (0.0, 0.98).")
     }
 
     mu0 <- histmean(data, freq)
@@ -124,7 +124,7 @@ expmodel <- function(data=data, freq=NULL, stepsize=c(0.5, 0.3)) {
 #' emodel <- expmodel(mixexpgamma$n200)
 #' ## Print a summary of an object
 #' summary(emodel)
-#' @seealso expmodel plot.expmodel estimate.expmodel
+#' @seealso [expmodel()] [plot.expmodel()] [estimate.expmodel()]
 #' @export
 summary.expmodel <- function(object, nmax = 10, estonly=FALSE, ...) {
     if (length(nmax) != 1) {
@@ -194,8 +194,8 @@ summary.expmodel <- function(object, nmax = 10, estonly=FALSE, ...) {
 #' emodel <- expmodel(mixexpgamma$n200)
 #' ## Plot it (histogram only)
 #' plot(emodel)
-#' @seealso expmodel summary.expmodel func.expmodel pdf_expmodel
-#' cdf_expmodel
+#' @seealso [expmodel()] [summary.expmodel()] [func.expmodel()] [pdf_expmodel()]
+#' [cdf_expmodel()]
 #' @importFrom rlang .data
 #' @method plot expmodel
 #' @export
@@ -245,10 +245,19 @@ plot.expmodel <- function(x, cum=FALSE, nmax=4, graphs=NULL, bins=40,
     g <- ggplot2::ggplot()
     if (hist) {
         if (is.null(x$freq)) {
-            g <- g + ggplot2::geom_histogram(ggplot2::aes(
+            if (!cum) {
+                g <- g + ggplot2::geom_histogram(ggplot2::aes(
                         x = x$data_orig,
-                        y = .data$..density..
+                        y = ggplot2::after_stat(.data$density)
                     ), breaks = breaks, fill = "white", color = "black")
+            } else {
+                dlen <- length(x$data_orig)
+                g <- g + ggplot2::geom_histogram(ggplot2::aes(
+                        x = x$data_orig,
+                        y = cumsum(ggplot2::after_stat(.data$count)) / dlen
+                    ), bins = bins, fill = "white", color = "black")
+            }
+
         } else {
             freq_positive_idx <- x$freq > 0
             freq_positive <- x$freq[freq_positive_idx]
@@ -259,10 +268,18 @@ plot.expmodel <- function(x, cum=FALSE, nmax=4, graphs=NULL, bins=40,
                 v[[i]] <- rep(samples_positive[i], freq_positive[i])
             }
             cv <- do.call(c, v)
-            g <- g + ggplot2::geom_histogram(ggplot2::aes(
+            if (!cum) {
+                g <- g + ggplot2::geom_histogram(ggplot2::aes(
                         x = cv,
-                        y = .data$..density..
+                        y = ggplot2::after_stat(.data$density)
                     ), breaks = breaks, fill = "white", color = "black")
+            } else {
+                g <- g + ggplot2::geom_histogram(ggplot2::aes(
+                        x = cv,
+                        y = cumsum(ggplot2::after_stat(.data$count)) /
+                                length(cv)
+                    ), bins = bins, fill = "white", color = "black")
+            }
         }
     }
 
@@ -374,28 +391,29 @@ plot.expmodel <- function(x, cum=FALSE, nmax=4, graphs=NULL, bins=40,
 #' parameter vectors, \code{deglist}, \code{lmdlist}.
 #' Then it sorts the results by AIC.
 #' @param model An object of \code{expmodel} class.
-#' @param deglist A vector of degrees of polynomials. They should be
+#' @param deglist A vector of degrees of polynomials. The element should be
 #' positive integers.
 #' @param lmdlist A vector of rate parameters of Exponential-based models.
-#' They should be larger than 0.
+#' The element should be larger than 0.
 #' @param recompute If \code{TRUE}, recomputes the results for
 #' better estimation and accuracy. Parameters whose accuracies had been already
 #' attained sufficiently, namely around 1.0e-6, are not included in candidates
 #' for recomputing.
-#' @param stepsize A vector in descending order whose values are between 0 and
-#' 1. If a small step size is supplied, it can attain successful estimates,
+#' @param stepsize A vector in descending order whose values are
+#' between 0 and 1.
+#' If a small step size is supplied, it can attain successful estimates,
 #' but it might take more iterations.
 #' @param verbose If \code{TRUE}, it shows the detailed message of SDP solver.
 #' @param ... Arguments to be passed to or from other methods.
 #' @return A \code{expmodel} object including the estimates.
-#' Those estimates are stored in \code{model$result} with \code{data.frame}
-#' form and \code{model$coeffs} in \code{list} form.
+#' Those estimates are stored in \code{model$result} with
+#' \code{data.frame} format and \code{model$coeffs} in \code{list} format.
 #' @examples
 #' ## Create an expmodel object
 #' emodel <- expmodel(mixexpgamma$n200)
 #' ## Estimate a model with parameters
 #' emodel <- estimate(emodel, c(4,5,6), c(0.25, 0.5, 1, 2, 4))
-#' @seealso expmodel summary.expmodel plot.expmodel
+#' @seealso [expmodel()] [summary.expmodel()] [plot.expmodel()]
 #' @method estimate expmodel
 #' @export
 estimate.expmodel <- function(model, deglist=deglist, lmdlist=lmdlist,
@@ -405,6 +423,30 @@ estimate.expmodel <- function(model, deglist=deglist, lmdlist=lmdlist,
     }
     if (is.null(stepsize)) {
         stepsize <- model$stepsize
+    } else {
+        if (!is.numeric(stepsize)) {
+            stop("'stepsize' should be numeric.")
+        }
+        if (any(is.na(stepsize))) {
+            stop("'stepsize' contains NAs.")
+        }
+        if (!all(stepsize > 0.0 & stepsize <= 0.98)) {
+            stop("'stepsize' is not in (0.0, 0.98).")
+        }
+    }
+
+    if (length(recompute) > 1) {
+        stop("'recompute' should be a scalar logical.")
+    }
+    if (!is.logical(recompute)) {
+        stop("'recompute' should be 'TRUE' or 'FALSE'.")
+    }
+
+    if (length(verbose) > 1) {
+        stop("'verbose' should be a scalar logical.")
+    }
+    if (!is.logical(verbose)) {
+        stop("'verbose' should be 'TRUE' or 'FALSE'.")
     }
 
     deglist <- as.integer(deglist)
@@ -633,11 +675,11 @@ estimate.expmodel <- function(model, deglist=deglist, lmdlist=lmdlist,
 }
 
 
-#' Return the evaluation of a vector with a distribution of Exponential-based
+#' Return the evaluation of a vector with Exponential-based
 #' model
 #'
-#' @description Evaluate an input vector `x` with a distribution of
-#' Exponential-based model and return its vector.
+#' @description Evaluate an input vector `x` with Exponential-based model and
+#' return its vector.
 #' By default, it evaluate with the best model and its density, but
 #' it can designate the model by index and also can evaluate with a cumulative
 #' distribution.
@@ -647,7 +689,7 @@ estimate.expmodel <- function(model, deglist=deglist, lmdlist=lmdlist,
 #' distribution or not. A default value is `FALSE`, which means that the
 #' evaluation is done with a density.
 #' @param n The index indicates the estimates. 1, by default, is the best
-#' estimate, snd 2 is the 2nd best, etc.
+#' estimate, and 2 is the 2nd best, etc.
 #' @param ... Arguments to be passed to or from other methods.
 #' @return A numeric vector of the evaluatio of input vector `x` with a model.
 #' @method func expmodel
@@ -662,8 +704,8 @@ estimate.expmodel <- function(model, deglist=deglist, lmdlist=lmdlist,
 #' y <- func(emodel, x)
 #' ## Cumulative distribution
 #' y <- func(emodel, x, cdf=TRUE)
-#' @seealso expmodel summary.expmodel plot.expmodel estimate.expmodel
-#' pdf_expmodel cdf_expmodel
+#' @seealso [expmodel()] [summary.expmodel()] [plot.expmodel()]
+#' [estimate.expmodel()] [pdf_expmodel()] [cdf_expmodel()]
 #' @export
 func.expmodel <- function(model, x, cdf=FALSE, n=1, ...) {
     if (is.null(model$result)) {
@@ -678,9 +720,14 @@ func.expmodel <- function(model, x, cdf=FALSE, n=1, ...) {
     if (any(is.infinite(x))) {
         stop("'x' contains Infs.")
     }
+
+    if (length(cdf) > 1) {
+        stop("'cdf' should be a scalar logical.")
+    }
     if (!is.logical(cdf)) {
         stop("'cdf' should be logical")
     }
+
     if (!is.numeric(n)) {
         stop("'n' should be integer")
     }
@@ -704,9 +751,10 @@ func.expmodel <- function(model, x, cdf=FALSE, n=1, ...) {
 #'
 #' @description Estimate coefficients of a polynomial in Exponential-based
 #' model:
-#' \deqn{\text{poly}(x, \alpha) \mathrm{Exp}(x; \lambda)},
+#' \deqn{\text{poly}(x; \alpha) \mathrm{Exp}(x; \lambda)},
 #' where \eqn{\alpha} is a coefficient vector, \eqn{\lambda} is a rate
-#' parameter of an exponential distribution.
+#' parameter of an exponential distribution:
+#' \deqn{\mathrm{Exp}(x; \lambda) := \lambda e^{-\lambda x}}.
 #'
 #' Using `data` and optionally its frequencies `freq`,
 #' and a degree of a polynomial,
@@ -715,11 +763,12 @@ func.expmodel <- function(model, x, cdf=FALSE, n=1, ...) {
 #' Akaike Information Criterion(AIC) and an accuracy information from
 #' underlying SDP solver.
 #' In general, the smaller the AIC is, the better the model is.
-#' An `accuracy` around `1e-7` is a good indication of a computational
+#' An `accuracy` around `1e-7` is a good indication for a computational
 #' result of coefficients estimation.
 #'
 #' @param deg A degree of polynomial, which is positive even integer.
-#' @param lmd A rate parameter of an exponential distribution.
+#' @param lmd A rate parameter of an exponential distribution, which
+#' is positive.
 #' @param data A numeric vector of a data set to be estimated.
 #' @param freq A numeric vector of frequencies for a data set `data`.
 #' The default value is `NULL`, which indicates that all frequencies are
@@ -730,9 +779,9 @@ func.expmodel <- function(model, x, cdf=FALSE, n=1, ...) {
 #' @param stepvec It designates the stepsize for SDP solver.
 #' If the problem is easy, i.e., the number of a data set are small and a degree
 #' of a polynomial is small, then, for example, `0.9` might be ok.
-#' If it looks difficult, then `c(0.7, 0.4)` might work.
+#' If it looks difficult, then `c(0.5, 0.3)` might work.
 #' @return A `list`  of `deg, lmd, aic, accuracy, coefficient vector`
-#' @seealso estimate.expmodel
+#' @seealso [estimate.expmodel()]
 #' @examples
 #' rlst <- exp_est(3, 1.0, mixexpgamma$n200, NULL, FALSE, c(0.7, 0.4))
 #' @export
@@ -758,8 +807,8 @@ exp_est <- function(deg, lmd, data, freq, verbose, stepvec)
 #' positive.
 #' @param x A numeric input vector.
 #' @return A numeric vector of PDF of an exponential-based model.
-#' @seealso expmodel summary.expmodel estimate.expmodel func.expmodel
-#' plot.expmodel cdf_expmodel
+#' @seealso [expmodel()] [summary.expmodel()] [estimate.expmodel()]
+#' [func.expmodel()] [plot.expmodel()] [cdf_expmodel()]
 #' @examples
 #' ## Create an object of `expmodel`
 #' emodel <- expmodel(mixexpgamma$n200)
@@ -774,9 +823,9 @@ pdf_expmodel <- function(coeff, lmd, x) .Call(reval_ExpModel_,
     coeff, lmd, x)
 
 
-#' Cumulative density function of Expomemtial-based model
+#' Cumulative distribution function of Expomemtial-based model
 #'
-#' @description A cumulative density function(CDF) of Exponential-based
+#' @description A cumulative distribution function(CDF) of Exponential-based
 #' model.
 #' To access parameters and coefficients in an object `emodel`
 #' of a class `expmodel`, use `emodel$result[k, "lmd1"]`,
@@ -789,8 +838,8 @@ pdf_expmodel <- function(coeff, lmd, x) .Call(reval_ExpModel_,
 #' @param lmd A rate parameter, which is positive.
 #' @param x A numeric vector of input.
 #' @return A numeric vector of CDF of an exponential-based model.
-#' @seealso expmodel summary.expmodel estimate.expmodel func.expmodel
-#' cdf_expmodel
+#' @seealso [expmodel()] [summary.expmodel()] [estimate.expmodel()]
+#' [func.expmodel()] [cdf_expmodel()]
 #' @examples
 #' ## Create an object of `expmodel`
 #' emodel <- expmodel(mixexpgamma$n200)

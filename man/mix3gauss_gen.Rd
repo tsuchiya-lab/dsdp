@@ -15,10 +15,11 @@ mix3gauss_gen(n = 100, seed = NULL)
 A numeric vector of probabilities for a given argument \code{x}.
 }
 \description{
-A random number generator of the density function:
+A random number generator whose density function is
+proportional to:
 \deqn{\exp(\frac{x^2}{2}) + 5\exp(\frac{(x-1)^2}{0.2}) +
 3\exp(\frac{(x-1)^2}{0.5}).}
 }
 \seealso{
-\code{\link{mix3gauss_fun}}
+\code{\link[=mix3gauss_fun]{mix3gauss_fun()}}
 }

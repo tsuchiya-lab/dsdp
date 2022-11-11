@@ -2,7 +2,7 @@
 % Please edit documentation in R/expmodel.r
 \name{func.expmodel}
 \alias{func.expmodel}
-\title{Return the evaluation of a vector with a distribution of Exponential-based
+\title{Return the evaluation of a vector with Exponential-based
 model}
 \usage{
 \method{func}{expmodel}(model, x, cdf = FALSE, n = 1, ...)
@@ -17,7 +17,7 @@ distribution or not. A default value is \code{FALSE}, which means that the
 evaluation is done with a density.}
 
 \item{n}{The index indicates the estimates. 1, by default, is the best
-estimate, snd 2 is the 2nd best, etc.}
+estimate, and 2 is the 2nd best, etc.}
 
 \item{...}{Arguments to be passed to or from other methods.}
 }
@@ -25,8 +25,8 @@ estimate, snd 2 is the 2nd best, etc.}
 A numeric vector of the evaluatio of input vector \code{x} with a model.
 }
 \description{
-Evaluate an input vector \code{x} with a distribution of
-Exponential-based model and return its vector.
+Evaluate an input vector \code{x} with Exponential-based model and
+return its vector.
 By default, it evaluate with the best model and its density, but
 it can designate the model by index and also can evaluate with a cumulative
 distribution.
@@ -44,6 +44,6 @@ y <- func(emodel, x)
 y <- func(emodel, x, cdf=TRUE)
 }
 \seealso{
-expmodel summary.expmodel plot.expmodel estimate.expmodel
-pdf_expmodel cdf_expmodel
+\code{\link[=expmodel]{expmodel()}} \code{\link[=summary.expmodel]{summary.expmodel()}} \code{\link[=plot.expmodel]{plot.expmodel()}}
+\code{\link[=estimate.expmodel]{estimate.expmodel()}} \code{\link[=pdf_expmodel]{pdf_expmodel()}} \code{\link[=cdf_expmodel]{cdf_expmodel()}}
 }

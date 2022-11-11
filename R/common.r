@@ -22,7 +22,7 @@ estimate <- function(model, ...) UseMethod("estimate")
 #' Evaluate a polynomial
 #'
 #' @description Evaluate the polynomial whose coefficients are represented in
-#' `coeff`. The order of the coefficient is an increasing order, i.e.,
+#' `coeff` vector. The order of the coefficient is an increasing order, i.e.,
 #' `coeff[1]` is a constant term, and `coeff[2]` is a coefficient of 1st degree
 #' term, etc. Evaluation is done using Horner's method.
 #' @param coeff A coefficient vector in increasing order of degrees;
@@ -30,7 +30,8 @@ estimate <- function(model, ...) UseMethod("estimate")
 #' degree of coefficients.
 #' @param x A numeric input vector.
 #' @return A vector of values of a polynomial whose coefficient is `coeff`.
-#' @seealso pdf_gaussmodel pdf_expmodel cdf_gaussmodel cdf_expmodel
+#' @seealso [pdf_gaussmodel()] [pdf_expmodel()] [cdf_gaussmodel()]
+#' [cdf_expmodel()]
 #' @examples
 #' ## Evaluate a polynomial x^2 - 2x + 2 with x = 1, 2, 3.
 #' ## 0th, 1st, 2nd degree of coefficients
@@ -55,7 +56,7 @@ eval_poly <- function(coeff, x) .Call(reval_poly_, coeff, x)
 #' @param a A coefficient of 1st degree of `a*x + b`.
 #' @param b A coefficient of 0th degree of `a*x + b`.
 #' @return A substituted coefficient.
-#' @seealso eval_poly
+#' @seealso [eval_poly()]
 #' @examples
 #' coeff <- c(2, -2, 1)
 #' a <- 1.1
@@ -84,7 +85,7 @@ polyaxb <- function(coeff, c, a, b) .Call(rpolyaxb_, coeff, c, a, b)
 #' @param freq A frequency vector corresponding to the `data` vector.
 #' The default value is `NULL`, which means all frequencies are one.
 #' @return The mean and the standard deviation of a data set.
-#' @seealso histmean
+#' @seealso [histmean()]
 #' @examples
 #' ## Without a frequency data
 #' datastats(mix2gauss$n200)
@@ -103,7 +104,7 @@ datastats <- function(data, freq = NULL) .Call(rdatastats_, data, freq)
 #' @param freq A frequency vector corresponding to the `data` vector.
 #' The default value is `NULL`, which means all frequencies are one.
 #' @return The mean of a data set.
-#' @seealso datastats
+#' @seealso [datastats()]
 #' @examples
 #' ## Without a frequency data
 #' histmean(mix2gauss$n200)

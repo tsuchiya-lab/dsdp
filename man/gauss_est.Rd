@@ -11,7 +11,7 @@ gauss_est(deg, mu, sig, data, freq, verbose, stepsize)
 
 \item{mu}{A mean of Gaussian distribution.}
 
-\item{sig}{A standard deviation of Gaussian distribution.}
+\item{sig}{A standard deviation of Gaussian distribution, which is positive.}
 
 \item{data}{A numeric vector of a data set to be estimated.}
 
@@ -26,7 +26,7 @@ all values should be positive integers.}
 \item{stepsize}{It designates the stepsize for SDP solver.
 If the problem is easy, i.e., the number of a data set are small and a degree
 of a polynomial is small, then, for example, \code{0.9} might be ok.
-If it looks difficult, then \code{c(0.7, 0.4)} might work.}
+If it looks difficult, then \code{c(0.5, 0.3)} might work.}
 }
 \value{
 A \code{list} of \code{deg}, \code{mu}, \code{sig}, \code{aic}, \code{accuracy},
@@ -36,7 +36,9 @@ A \code{list} of \code{deg}, \code{mu}, \code{sig}, \code{aic}, \code{accuracy},
 Estimate coefficients of a polynomial in Gaussian-based model:
 \deqn{\mathrm{poly}(x, \alpha) N(x; \mu, \sigma^2)},
 where \eqn{\alpha} is a coefficient vector, \eqn{\mu} and \eqn{\sigma}
-are a mean and a standard deviation of Gaussian distribution.
+are a mean and a standard deviation of Gaussian distribution:
+\deqn{N(x; \mu, \sigma^2) :=\frac{1}{\sigma \sqrt{2\pi}}
+ \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right) }
 
 Using \code{data} and optionally its frequencies \code{freq},
 and a degree of a polynomial,
@@ -45,12 +47,12 @@ it computes the coefficients of a polynomial, along with
 Akaike Information Criterion(AIC) and an accuracy information from
 an underlying SDP solver.
 In general, the smaller the AIC is, the better the model is.
-An \code{accuracy} around \code{1e-7} is a good indication of a computational
+An \code{accuracy} around \code{1e-7} is a good indication for a computational
 result of coefficients estimation.
 }
 \examples{
 rlst <- gauss_est(4, 0, 1, mix2gauss$n200, NULL, FALSE, c(0.7, 0.4))
 }
 \seealso{
-estimate.gaussmodel
+\code{\link[=estimate.gaussmodel]{estimate.gaussmodel()}}
 }

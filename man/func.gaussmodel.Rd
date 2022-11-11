@@ -2,8 +2,7 @@
 % Please edit documentation in R/gaussmodel.r
 \name{func.gaussmodel}
 \alias{func.gaussmodel}
-\title{Return the evaluation of a vector with a distribution of Gaussian-based
-model}
+\title{Return the evaluation of a vector with Gaussian-based model}
 \usage{
 \method{func}{gaussmodel}(model, x, cdf = FALSE, n = 1, scaling = FALSE, ...)
 }
@@ -17,7 +16,7 @@ distribution or not. A default value is \code{FALSE}, which means that the
 evaluation is done with a density.}
 
 \item{n}{The index indicates the estimates. 1, by default, is the best
-estimate, snd 2 is the 2nd best, etc.}
+estimate, and 2 is the 2nd best, etc.}
 
 \item{scaling}{A logical scalar, which indicates whether or not it scales
 means and standard deviations in \code{mulist} and \code{sdlist}.
@@ -29,8 +28,8 @@ The default value is \code{FALSE}.}
 A numeric vector of the evaluatio of input vector \code{x} with a model.
 }
 \description{
-Evaluate an input vector \code{x} with a distribution of
-Gaussian-based model and return its vector.
+Evaluate an input vector \code{x} with Gaussian-based model and
+return its vector.
 By default, it evaluate with the best model and its density, but
 it can designate the model by index and also can evaluate with a cumulative
 distribution.
@@ -48,6 +47,6 @@ y <- func(gmodel, x)
 y <- func(gmodel, x, cdf=TRUE)
 }
 \seealso{
-\link{gaussmodel} \link{summary.gaussmodel} \link{plot.gaussmodel}
-\link{estimate.gaussmodel} \link{pdf_gaussmodel} \link{cdf_gaussmodel}
+\code{\link[=gaussmodel]{gaussmodel()}} \code{\link[=summary.gaussmodel]{summary.gaussmodel()}} \code{\link[=plot.gaussmodel]{plot.gaussmodel()}}
+\code{\link[=estimate.gaussmodel]{estimate.gaussmodel()}} \code{\link[=pdf_gaussmodel]{pdf_gaussmodel()}} \code{\link[=cdf_gaussmodel]{cdf_gaussmodel()}}
 }

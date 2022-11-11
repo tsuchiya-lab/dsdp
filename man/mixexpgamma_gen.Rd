@@ -15,9 +15,9 @@ mixexpgamma_gen(n = 100, seed = NULL)
 A numeric vector of probabilities for a given argument \code{x}.
 }
 \description{
-Generate random numbers of the density function:
+Generate random numbers whose density function:
 \deqn{0.2(2 e^{-2x}) + 0.8 \frac{x^3}{3!}e^{-x}.}
 }
 \seealso{
-\code{\link{mixexpgamma_fun}}
+\code{\link[=mixexpgamma_fun]{mixexpgamma_fun()}}
 }

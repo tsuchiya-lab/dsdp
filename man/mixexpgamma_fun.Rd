@@ -17,5 +17,5 @@ A density function of
 \deqn{0.2(2 e^{-2x}) + 0.8 \frac{x^3}{3!}e^{-x}.}
 }
 \seealso{
-\code{\link{mixexpgamma_gen}}
+\code{\link[=mixexpgamma_gen]{mixexpgamma_gen()}}
 }

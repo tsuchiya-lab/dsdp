@@ -38,5 +38,5 @@ the information of estimates and coefficients of polynomials, respectively.
  emodel <- expmodel(mixExpGammaHist$n800p, mixExpGammaHist$n800f)
 }
 \seealso{
-summary.expmodel plot.expmodel estimate.expmodel
+\code{\link[=summary.expmodel]{summary.expmodel()}} \code{\link[=plot.expmodel]{plot.expmodel()}} \code{\link[=estimate.expmodel]{estimate.expmodel()}}
 }

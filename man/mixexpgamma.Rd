@@ -3,26 +3,28 @@
 \docType{data}
 \name{mixexpgamma}
 \alias{mixexpgamma}
-\title{Mixture of Exponential Distribution and Gamma Distribution}
+\title{Dataset of Mixture of Exponential Distribution and Gamma Distribution}
 \format{
 A list of numeric vectors of Mixture of Exponential and Gamma
 distribution Model.
 \describe{
-\item{n200}{200 elements numeric vector}
-\item{n400}{400 elements numeric vector}
-\item{n600}{600 elements numeric vector}
-\item{n800}{800 elements numeric vector}
-\item{n1000}{1000 elements numeric vector}
-\item{n1200}{1200 elements numeric vector}
+\item{n200}{A numeric vector with 200 elements.}
+\item{n400}{A numeric vector with 400 elements.}
+\item{n600}{A numeric vector with 600 elements.}
+\item{n800}{A numeric vector with 800 elements.}
+\item{n1000}{A numeric vector with 1000 elements.}
+\item{n1200}{A numeric vector with 1200 elements.}
 }
 }
 \source{
-\code{\link{mixexpgamma_gen}}
+\code{\link[=mixexpgamma_gen]{mixexpgamma_gen()}}
 }
 \usage{
 mixexpgamma
 }
 \description{
-Mixture of Exponential Distribution and Gamma Distribution
+Dataset of mixture of exponential distribution and gamma distribution
+whose density is:
+\deqn{0.2(2 e^{-2x}) + 0.8 \frac{x^3}{3!}e^{-x}.}
 }
 \keyword{datasets}

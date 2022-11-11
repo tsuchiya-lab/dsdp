@@ -22,7 +22,7 @@
 #' ## Create `gaussmodel` object from a data set `mix2gaussHist$n200p` and
 #' ## its frequencies `mix2gaussHist$n200f`.
 #'  gmodel <- gaussmodel(mix2gaussHist$n200p, mix2gaussHist$n200f)
-#' @seealso [summary.gaussmodel] [plot.gaussmodel] [estimate.gaussmodel]
+#' @seealso [summary.gaussmodel()] [plot.gaussmodel()] [estimate.gaussmodel()]
 #' @export
 gaussmodel <- function(data=data, freq=NULL,
     stepsize=c(0.5, 0.3)) {
@@ -67,7 +67,7 @@ gaussmodel <- function(data=data, freq=NULL,
         stop("'stepsize' contains NAs.")
     }
     if (!all(stepsize > 0.0 & stepsize <= 0.98)) {
-        stop("'stepsize' is not in (0.0, 0.98].")
+        stop("'stepsize' is not in (0.0, 0.98).")
     }
 
     stats0 <- datastats(data, freq)
@@ -126,7 +126,7 @@ gaussmodel <- function(data=data, freq=NULL,
 #' gmodel <- gaussmodel(mix2gauss$n200)
 #' ## Print a summary of an object
 #' summary(gmodel)
-#' @seealso [gaussmodel] [plot.gaussmodel] [estimate.gaussmodel]
+#' @seealso [gaussmodel()] [plot.gaussmodel()] [estimate.gaussmodel()]
 #' @export
 summary.gaussmodel <- function(object, nmax=10, estonly=FALSE, ...) {
     if (length(nmax) != 1) {
@@ -158,7 +158,6 @@ summary.gaussmodel <- function(object, nmax=10, estonly=FALSE, ...) {
     }
 
     if (!is.null(object$result)) {
-        
         if (estonly) {
             cat("  ESTIMATION\n")
             cat("Name: ")
@@ -206,8 +205,8 @@ summary.gaussmodel <- function(object, nmax=10, estonly=FALSE, ...) {
 #' gmodel <- gaussmodel(mix2gauss$n200)
 #' ## Plot it (histogram only)
 #' plot(gmodel)
-#' @seealso [gaussmodel] [summary.gaussmodel] [func.gaussmodel] [pdf_gaussmodel]
-#' [cdf_gaussmodel]
+#' @seealso [gaussmodel()] [summary.gaussmodel()] [func.gaussmodel()]
+#' [pdf_gaussmodel()] [cdf_gaussmodel()]
 #' @importFrom rlang .data
 #' @method plot gaussmodel
 #' @export
@@ -276,13 +275,13 @@ plot.gaussmodel <- function(x, cum=FALSE, nmax=4, graphs=NULL, bins=40,
             if (!cum) {
                 g <- g + ggplot2::geom_histogram(ggplot2::aes(
                         x = xdata,
-                        y = .data$..density..
+                        y = ggplot2::after_stat(.data$density)
                     ), bins = bins, fill = "white", color = "black")
             } else {
                 dlen <- length(xdata)
                 g <- g + ggplot2::geom_histogram(ggplot2::aes(
                         x = xdata,
-                        y = cumsum(.data$..count..) / dlen
+                        y = cumsum(ggplot2::after_stat(.data$count)) / dlen
                     ), bins = bins, fill = "white", color = "black")
             }
 
@@ -299,12 +298,13 @@ plot.gaussmodel <- function(x, cum=FALSE, nmax=4, graphs=NULL, bins=40,
             if (!cum) {
                 g <- g + ggplot2::geom_histogram(ggplot2::aes(
                         x = data,
-                        y = .data$..density..
+                        y = ggplot2::after_stat(.data$density)
                     ), bins = bins, fill = "white", color = "black")
             } else {
                 g <- g + ggplot2::geom_histogram(ggplot2::aes(
                         x = data,
-                        y = cumsum(.data$..count..) / length(data)
+                        y = cumsum(ggplot2::after_stat(.data$count)) /
+                                length(data)
                     ), bins = bins, fill = "white", color = "black")
             }
         }
@@ -494,11 +494,11 @@ plot.gaussmodel <- function(x, cum=FALSE, nmax=4, graphs=NULL, bins=40,
 #' parameter vectors, \code{deglist}, \code{mulist}, \code{sdlist}.
 #' Then it sorts the results by AIC.
 #' @param model An object of a \code{gaussmodel} class.
-#' @param deglist A vector of degrees of polynomials. They should be positive
-#' even numbers.
+#' @param deglist A vector of degrees of polynomials. The element should be
+#' positive even numbers.
 #' @param mulist A vector of means for Gaussian-based models.
 #' @param sdlist A vector of standard deviations for Gaussian-based models.
-#' They should be larger than 0.
+#' The element should be larger than 0.
 #' @param scaling A logical scalar, which indicates whether or not it scales
 #' means and standard deviations in `mulist` and `sdlist`.
 #' The default value is `FALSE`.
@@ -506,21 +506,22 @@ plot.gaussmodel <- function(x, cum=FALSE, nmax=4, graphs=NULL, bins=40,
 #' estimation and accuracy. Parameters whose accuracies had been already
 #' attained sufficiently, namely around 1.0e-6, are not included in candidates
 #' for recomputing.
-#' @param stepsize A vector in descending order whose values are between 0 and
-#' 1. If a small step size is supplied, it can attain successful estimates,
+#' @param stepsize A vector in descending order whose values are
+#' between 0 and 1.
+#' If a small step size is supplied, it can attain successful estimates,
 #' but it might take more iterations.
 #' @param verbose If \code{TRUE}, it shows the detailed message of SDP solver.
 #' @param ... Arguments to be passed to or from other methods.
 #' @return A \code{gaussmodel} object including the estimates.
-#' Those estimates are stored in \code{model$result} with \code{data.frame}
-#' form and \code{model$coeffs} in \code{list} form.
+#' Those estimates are stored in \code{model$result} with
+#' \code{data.frame} format and \code{model$coeffs} in \code{list} format.
 #' @examples
 #' ## Create an `gaussmodel` object
 #' gmodel <- gaussmodel(mix2gauss$n200)
 #' ## Estimate a model with parameters
 #' gmodel <- estimate(gmodel, deglist=c(2, 4), mulist=c(0.0, 0.2),
-#'              sdlist=c(0.75, 1.0, 1.25))
-#' @seealso gaussmodel summary.gaussmodel plot.gaussmodel
+#'              sdlist=c(0.75, 1.0))
+#' @seealso [gaussmodel()] [summary.gaussmodel()] [plot.gaussmodel()]
 #' @method estimate gaussmodel
 #' @export
 estimate.gaussmodel <- function(model, deglist=deglist, mulist=mulist,
@@ -540,7 +541,7 @@ estimate.gaussmodel <- function(model, deglist=deglist, mulist=mulist,
             stop("'stepsize' contains NAs.")
         }
         if (!all(stepsize > 0.0 & stepsize <= 0.98)) {
-            stop("'stepsize' is not in (0.0, 0.98].")
+            stop("'stepsize' is not in (0.0, 0.98).")
         }
     }
 
@@ -1059,11 +1060,10 @@ estimate.gaussmodel <- function(model, deglist=deglist, mulist=mulist,
     return(model)
 }
 
-#' Return the evaluation of a vector with a distribution of Gaussian-based
-#' model
+#' Return the evaluation of a vector with Gaussian-based model
 #'
-#' @description Evaluate an input vector `x` with a distribution of
-#' Gaussian-based model and return its vector.
+#' @description Evaluate an input vector `x` with Gaussian-based model and
+#' return its vector.
 #' By default, it evaluate with the best model and its density, but
 #' it can designate the model by index and also can evaluate with a cumulative
 #' distribution.
@@ -1073,7 +1073,7 @@ estimate.gaussmodel <- function(model, deglist=deglist, mulist=mulist,
 #' distribution or not. A default value is `FALSE`, which means that the
 #' evaluation is done with a density.
 #' @param n The index indicates the estimates. 1, by default, is the best
-#' estimate, snd 2 is the 2nd best, etc.
+#' estimate, and 2 is the 2nd best, etc.
 #' @param scaling A logical scalar, which indicates whether or not it scales
 #' means and standard deviations in `mulist` and `sdlist`.
 #' The default value is `FALSE`.
@@ -1091,8 +1091,8 @@ estimate.gaussmodel <- function(model, deglist=deglist, mulist=mulist,
 #' y <- func(gmodel, x)
 #' ## Cumulative distribution
 #' y <- func(gmodel, x, cdf=TRUE)
-#' @seealso [gaussmodel] [summary.gaussmodel] [plot.gaussmodel]
-#' [estimate.gaussmodel] [pdf_gaussmodel] [cdf_gaussmodel]
+#' @seealso [gaussmodel()] [summary.gaussmodel()] [plot.gaussmodel()]
+#' [estimate.gaussmodel()] [pdf_gaussmodel()] [cdf_gaussmodel()]
 #' @export
 func.gaussmodel <- function(model, x, cdf=FALSE, n=1, scaling=FALSE, ...) {
     if (is.null(model$result)) {
@@ -1110,7 +1110,6 @@ func.gaussmodel <- function(model, x, cdf=FALSE, n=1, scaling=FALSE, ...) {
 
     if (length(cdf) > 1) {
         stop("'cdf' should be a scalar logical.")
-
     }
     if (!is.logical(cdf)) {
         stop("'cdf' should be 'TRUE' or 'FALSE'.")
@@ -1124,6 +1123,9 @@ func.gaussmodel <- function(model, x, cdf=FALSE, n=1, scaling=FALSE, ...) {
         stop("'scaling' should be 'TRUE' or 'FALSE'.")
     }
 
+    if (!is.numeric(n)) {
+        stop("'n' should be integer")
+    }
     nest <- dim(model$result)[1]
     n <- as.integer(n)
     n <- n[1]
@@ -1157,7 +1159,9 @@ func.gaussmodel <- function(model, x, cdf=FALSE, n=1, scaling=FALSE, ...) {
 #' @description Estimate coefficients of a polynomial in Gaussian-based model:
 #' \deqn{\mathrm{poly}(x, \alpha) N(x; \mu, \sigma^2)},
 #' where \eqn{\alpha} is a coefficient vector, \eqn{\mu} and \eqn{\sigma}
-#' are a mean and a standard deviation of Gaussian distribution.
+#' are a mean and a standard deviation of Gaussian distribution:
+#' \deqn{N(x; \mu, \sigma^2) :=\frac{1}{\sigma \sqrt{2\pi}}
+#'  \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right) }
 #'
 #' Using `data` and optionally its frequencies `freq`,
 #' and a degree of a polynomial,
@@ -1166,12 +1170,12 @@ func.gaussmodel <- function(model, x, cdf=FALSE, n=1, scaling=FALSE, ...) {
 #' Akaike Information Criterion(AIC) and an accuracy information from
 #' an underlying SDP solver.
 #' In general, the smaller the AIC is, the better the model is.
-#' An `accuracy` around `1e-7` is a good indication of a computational
+#' An `accuracy` around `1e-7` is a good indication for a computational
 #' result of coefficients estimation.
 #'
 #' @param deg A degree of polynomial, which is positive even integer.
 #' @param mu A mean of Gaussian distribution.
-#' @param sig A standard deviation of Gaussian distribution.
+#' @param sig A standard deviation of Gaussian distribution, which is positive.
 #' @param data A numeric vector of a data set to be estimated.
 #' @param freq A numeric vector of frequencies for a data set `data`.
 #' The default value is `NULL`, which indicates that all frequencies are
@@ -1182,10 +1186,10 @@ func.gaussmodel <- function(model, x, cdf=FALSE, n=1, scaling=FALSE, ...) {
 #' @param stepsize It designates the stepsize for SDP solver.
 #' If the problem is easy, i.e., the number of a data set are small and a degree
 #' of a polynomial is small, then, for example, `0.9` might be ok.
-#' If it looks difficult, then `c(0.7, 0.4)` might work.
+#' If it looks difficult, then `c(0.5, 0.3)` might work.
 #' @return A `list` of `deg`, `mu`, `sig`, `aic`, `accuracy`,
 #' `coefficient vector`.
-#' @seealso estimate.gaussmodel
+#' @seealso [estimate.gaussmodel()]
 #' @examples
 #' rlst <- gauss_est(4, 0, 1, mix2gauss$n200, NULL, FALSE, c(0.7, 0.4))
 #' @export
@@ -1210,8 +1214,8 @@ gauss_est <- function(deg, mu, sig, data, freq, verbose, stepsize)
 #' @param sig A standard deviation of Gaussian distribution, which is positive.
 #' @param x A numeric input vector.
 #' @return A numeric vector of PDF of Gaussian-based distribution.
-#' @seealso gaussmodel summary.gaussmodel estimate.gaussmodel
-#' func.gaussmodel plot.gaussmodel cdf_gaussmodel
+#' @seealso [gaussmodel()] [summary.gaussmodel()] [estimate.gaussmodel()]
+#' [func.gaussmodel()] [plot.gaussmodel()] [cdf_gaussmodel()]
 #' @examples
 #' ## Create an object of `gaussmodel`
 #' gmodel <- gaussmodel(mix2gauss$n200)
@@ -1227,9 +1231,9 @@ pdf_gaussmodel <- function(coeff, mu, sig, x) .Call(reval_GaussModel_,
     coeff, mu, sig, x)
 
 
-#' Cumulative density function of Gaussian-based model
+#' Cumulative distribution function of Gaussian-based model
 #'
-#' @description A cumulative density function(CDF) of Gaussian-based model.
+#' @description A cumulative distribution function(CDF) of Gaussian-based model.
 #' To access parameters and coefficients in an object `gmodel`
 #' of a class `gaussmodel`, use `gmodel$result[k, "mu1"]`,
 #' `gmodel$result[k, "sig1"]`, `gmodel$coeffs[[k]]` for some index `k`.
@@ -1241,9 +1245,9 @@ pdf_gaussmodel <- function(coeff, mu, sig, x) .Call(reval_GaussModel_,
 #' @param mu A mean of Gaussian distribution.
 #' @param sig A standard deviation of Gaussian distribution, which is positive.
 #' @param x A numeric input vector.
-#' @return A numeric vector of CDF Gaussian-based model.
-#' @seealso gaussmodel summary.gaussmodel estimate.gaussmodel
-#' func.gaussmodel pdf_gaussmodel
+#' @return A numeric vector of CDF of Gaussian-based model.
+#' @seealso [gaussmodel()] [summary.gaussmodel()] [estimate.gaussmodel()]
+#' [func.gaussmodel()] [pdf_gaussmodel()]
 #' @examples
 #' ## Create an object of `gaussmodel`
 #' gmodel <- gaussmodel(mix2gauss$n200)

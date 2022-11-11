@@ -3,28 +3,33 @@
 \docType{data}
 \name{mix2gaussHist}
 \alias{mix2gaussHist}
-\title{Mixture of 2 Gauss Distributions $4.2.1, histogram version}
+\title{Dataset of Mixture of 2 Gaussian Distributions: Histogram version}
 \format{
 A list of numeric vectors of Bimodal Gaussian Mixture Model.
 \describe{
-\item{n200}{200 elements numeric vector}
-\item{n200p}{histogram sample data with bins 25}
-\item{n200f}{histogram frequency data with bins 25}
-\item{n400}{400 elements numeric vector}
-\item{n400p}{histogram sample data with bins 50}
-\item{n400f}{histogram frequency data with bins 50}
-\item{n800}{800 elements numeric vector}
-\item{n800p}{histogram sample data with bins 100}
-\item{n800f}{histogram frequency data with bins 100}
+\item{n200}{A numeric vector with 200 elements.}
+\item{n200p}{Histogram sample data with 25 bins.}
+\item{n200f}{Histogram frequency data with 25 bins.}
+\item{n400}{A numeric vector with 400 elements.}
+\item{n400p}{Histogram sample data with 50 bins.}
+\item{n400f}{Histogram frequency data with 50 bins.}
+\item{n800}{A numeric vector with 800 elements.}
+\item{n800p}{Histogram sample data with 100 bins.}
+\item{n800f}{Histogram frequency data with 100 bins.}
 }
 }
 \source{
-\code{\link{mix2gauss_gen}} \code{\link{databinning}}
+\code{\link[=mix2gauss_gen]{mix2gauss_gen()}} \code{\link[=databinning]{databinning()}}
 }
 \usage{
 mix2gaussHist
 }
 \description{
-Mixture of 2 Gauss Distributions $4.2.1, histogram version
+Dataset of Mixture of 2 Gaussian Distributions, histogram version,
+whose density is:
+\deqn{\frac{0.3}{\sqrt{2 \pi 0.5^2}}
+\exp\left(\frac{(x+1)^2}{2 \cdot 0.5^2}\right) +
+\frac{0.7}{\sqrt{2 \pi 0.5^2}}
+\exp\left(\frac{(x-1)^2}{2 \cdot 0.5^2}\right)}.
 }
 \keyword{datasets}

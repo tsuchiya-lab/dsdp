@@ -61,6 +61,6 @@ gmodel <- gaussmodel(mix2gauss$n200)
 plot(gmodel)
 }
 \seealso{
-\link{gaussmodel} \link{summary.gaussmodel} \link{func.gaussmodel} \link{pdf_gaussmodel}
-\link{cdf_gaussmodel}
+\code{\link[=gaussmodel]{gaussmodel()}} \code{\link[=summary.gaussmodel]{summary.gaussmodel()}} \code{\link[=func.gaussmodel]{func.gaussmodel()}}
+\code{\link[=pdf_gaussmodel]{pdf_gaussmodel()}} \code{\link[=cdf_gaussmodel]{cdf_gaussmodel()}}
 }

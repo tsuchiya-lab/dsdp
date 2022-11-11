@@ -2,7 +2,7 @@
 % Please edit documentation in R/expmodel.r
 \name{cdf_expmodel}
 \alias{cdf_expmodel}
-\title{Cumulative density function of Expomemtial-based model}
+\title{Cumulative distribution function of Expomemtial-based model}
 \usage{
 cdf_expmodel(coeff, lmd, x)
 }
@@ -19,7 +19,7 @@ of coefficients.}
 A numeric vector of CDF of an exponential-based model.
 }
 \description{
-A cumulative density function(CDF) of Exponential-based
+A cumulative distribution function(CDF) of Exponential-based
 model.
 To access parameters and coefficients in an object \code{emodel}
 of a class \code{expmodel}, use \code{emodel$result[k, "lmd1"]},
@@ -38,6 +38,6 @@ x <- seq(0, 12, 0.1)
 yv <- cdf_expmodel(emodel$coeffs[[1]], emodel$result[1, "lmd1"], x)
 }
 \seealso{
-expmodel summary.expmodel estimate.expmodel func.expmodel
-cdf_expmodel
+\code{\link[=expmodel]{expmodel()}} \code{\link[=summary.expmodel]{summary.expmodel()}} \code{\link[=estimate.expmodel]{estimate.expmodel()}}
+\code{\link[=func.expmodel]{func.expmodel()}} \code{\link[=cdf_expmodel]{cdf_expmodel()}}
 }

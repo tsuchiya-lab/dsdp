@@ -7,7 +7,7 @@
 #' @return A named list of `values` and `freq` whose length is `bins`.
 #' @examples
 #' rlst <- databinning(mix2gauss$n200)
-#' @seealso \code{link[base]{rle}}
+#' @seealso [base::rle()]
 #' @export
 databinning <- function(data, bins = 40) {
     data <- sort(data)
@@ -45,13 +45,13 @@ databinning <- function(data, bins = 40) {
 #' @description Evaluate an incomplete gamma function:
 #' \deqn{\gamma(a, x) = \int_{0}^{x} t^{a-1} e^{-t}dt,}
 #' using SLATEC `dgami` in \url{https://netlib.org/slatec/}.
-#' When \eqn{a \gt 0} and \eqn{x \ge 0}, compute the result, otherwise the value
-#' is `NaN`.
+#' When (\eqn{x > 0} and \eqn{a \ge 0}) or (\eqn{x \ge 0} and \eqn{a > 0}),
+#' compute the result, otherwise the value is `NaN`.
 #' @param a A positive numeric vector.
 #' @param x A nonnegative numeric vector with same length as `a`.
 #' length.
 #' @return A vector of values of an incomplete gamma function.
-#' @seealso igammac
+#' @seealso [igammac()]
 #' @examples
 #' igamma(1, 1)
 #' @export
@@ -63,13 +63,12 @@ igamma <- function(a, x) .Call(rigamma_, a, x)
 #' @description Evaluate an complementary incomplete gamma function:
 #' \deqn{\gamma^{*}(a, x) = \int_{x}^{\infty} t^{a-1} e^{-t}dt,}
 #' using SLATEC `dgamic` in \url{https://netlib.org/slatec/}.
-#' When \eqn{x > 0} or \eqn{x \eq 0} & \eqn{a \ge 0}, compute the result,
-#' otherwise the value is `NaN`.
+#' When (\eqn{x > 0} and \eqn{a \ge 0}) or (\eqn{x \ge 0} and \eqn{a > 0}),
+#' compute the result, otherwise the value is `NaN`.
 #' @param a A numeric vector.
 #' @param x A nonnegative numeric vector with same length as `a`.
-#' length.
 #' @return A vector of values of a complementary incomplete gamma function.
-#' @seealso igamma
+#' @seealso [igamma()]
 #' @examples
 #' igammac(1, 1)
 #' @export
@@ -78,15 +77,16 @@ igammac <- function(a, x) .Call(ricgamma_, a, x)
 
 #' Generate mixed Gaussian random numbers
 #'
-#' @description
-#' Generate mix gaussian random numbers whose density is
-#' \deqn{\frac{0.3}{\sqrt{2 \pi 0.5^2}}\exp(\frac{(x+1)^2}{2 \cdot 0.5^2}) +
-#' \frac{0.7}{\sqrt{2 \pi 0.5^2}}\exp(\frac{(x-1)^2}{2 \cdot 0.5^2}).}
+#' @description Generate mix gaussian random numbers whose density is:
+#' \deqn{\frac{0.3}{\sqrt{2 \pi 0.5^2}}
+#' \exp\left(\frac{(x+1)^2}{2 \cdot 0.5^2}\right) +
+#' \frac{0.7}{\sqrt{2 \pi 0.5^2}}
+#' \exp\left(\frac{(x-1)^2}{2 \cdot 0.5^2}\right)}.
 #' @param n The number of random numbers.
 #' @param seed A seed for random number generator.
 #' @return A numeric vector of random numbers whose a density is described
 #' in Description.
-#' @seealso mix2gauss_fun
+#' @seealso [mix2gauss_fun()]
 #' @export
 mix2gauss_gen <- function(n = 100, seed = NULL) {
     if (!is.null(seed)) {
@@ -103,14 +103,17 @@ mix2gauss_gen <- function(n = 100, seed = NULL) {
 }
 
 
-#' A density function of a mixed gaussian distribution
+#' A density function of mixed Gaussian distributions
 #'
-#' @description A density function of a mixed gaussian distribution:
-#' \deqn{\frac{0.3}{\sqrt{2 \pi 0.5^2}}\exp(\frac{(x+1)^2}{2 \cdot 0.5^2}) +
-#' \frac{0.7}{\sqrt{2 \pi 0.5^2}}\exp(\frac{(x-1)^2}{2 \cdot 0.5^2}).}
+#' @description A density function of mixed Gaussian distributions
+#' whose density is:
+#' \deqn{\frac{0.3}{\sqrt{2 \pi 0.5^2}}
+#' \exp\left(\frac{(x+1)^2}{2 \cdot 0.5^2}\right) +
+#' \frac{0.7}{\sqrt{2 \pi 0.5^2}}
+#' \exp\left(\frac{(x-1)^2}{2 \cdot 0.5^2}\right)}.
 #' @param x A numeric vector for arguments of a density function.
 #' @return A numeric vector of probabilities for a given argument `x`.
-#' @seealso mix2gauss_gen
+#' @seealso [mix2gauss_gen()]
 #' @export
 mix2gauss_fun <- function(x) {
     z <- 0.3 * stats::dnorm(x, -1, 0.5) + 0.7 * stats::dnorm(x, 1, 0.5)
@@ -120,13 +123,14 @@ mix2gauss_fun <- function(x) {
 
 #' Generate Mixed Gaussian Random Numbers
 #'
-#' @description A random number generator of the density function:
+#' @description A random number generator whose density function is
+#' proportional to:
 #' \deqn{\exp(\frac{x^2}{2}) + 5\exp(\frac{(x-1)^2}{0.2}) +
 #' 3\exp(\frac{(x-1)^2}{0.5}).}
 #' @param n The number of random numbers.
 #' @param seed A seed for random number generator.
 #' @return A numeric vector of probabilities for a given argument `x`.
-#' @seealso \code{\link{mix3gauss_fun}}
+#' @seealso [mix3gauss_fun()]
 #' @export
 mix3gauss_gen <- function(n = 100, seed = NULL) {
     if (!is.null(seed)) {
@@ -150,12 +154,12 @@ mix3gauss_gen <- function(n = 100, seed = NULL) {
 
 #' A density function of mixed gaussian distribution
 #'
-#' @description A density function of
+#' @description A density function proportional to:
 #' \deqn{\exp(\frac{x^2}{2}) + 5\exp(\frac{(x-1)^2}{0.2}) +
 #' 3\exp(\frac{(x-1)^2}{0.5}).}
 #' @param x A numeric vector for arguments of a density function.
 #' @return A numeric vector of probabilities for a given argument `x`.
-#' @seealso \code{\link{mix3gauss_gen}}
+#' @seealso [mix3gauss_gen()]
 #' @export
 mix3gauss_fun <- function(x) {
     t <- 1 + 5 * sqrt(0.1) + 6
@@ -166,12 +170,12 @@ mix3gauss_fun <- function(x) {
 
 #' Generate random numbers of Mixed Exponential and Gamma Distributions
 #'
-#' @description Generate random numbers of the density function:
+#' @description Generate random numbers whose density function:
 #' \deqn{0.2(2 e^{-2x}) + 0.8 \frac{x^3}{3!}e^{-x}.}
 #' @param n The number of random numbers.
 #' @param seed A seed for random number generator.
 #' @return A numeric vector of probabilities for a given argument `x`.
-#' @seealso \code{\link{mixexpgamma_fun}}
+#' @seealso [mixexpgamma_fun()]
 #' @export
 mixexpgamma_gen <- function(n = 100, seed = NULL) {
     if (!is.null(seed)) {
@@ -194,7 +198,7 @@ mixexpgamma_gen <- function(n = 100, seed = NULL) {
 #' \deqn{0.2(2 e^{-2x}) + 0.8 \frac{x^3}{3!}e^{-x}.}
 #' @param x A numeric vector for arguments of a density function.
 #' @return A numeric vector of probabilities for a given argument `x`.
-#' @seealso \code{\link{mixexpgamma_gen}}
+#' @seealso [mixexpgamma_gen()]
 #' @export
 mixexpgamma_fun <- function(x) {
     z <- 0.2 * stats::dexp(x, 2) + 0.8 * stats::dgamma(x, 4, 1)

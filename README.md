@@ -10,7 +10,7 @@ status](https://www.r-pkg.org/badges/version/dsdp)](https://CRAN.R-project.org/p
 [![R-CMD-check](https://github.com/tsuchiya-lab/dsdp/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tsuchiya-lab/dsdp/actions/workflows/R-CMD-check.yaml)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![GitHub](https://img.shields.io/github/license/tsuchiya-lab/dsdp)](https://github.com/tsuchiya-lab/dsdp/LICENSE.md)
+[![GitHub](https://img.shields.io/github/license/tsuchiya-lab/dsdp)](https://github.com/tsuchiya-lab/dsdp/blob/main/LICENSE.md)
 <!-- badges: end -->
 
 The goal of `dsdp` is to estimate probability density functions from a
@@ -28,7 +28,7 @@ and then model selection is done by Akaike Information Criterion.
 install.packages(dsdp)
 ```
 
-You can install the development version of `dsdp` like so:
+You can install the development version of `dsdp` from this repository:
 
 ``` r
 ## Install from github
@@ -36,12 +36,12 @@ devtools::install_github("tsuchiya-lab/dsdp")
 ```
 
 To install from source codes, the user needs an appropriate compiler
-toolchain, for example, rtools in windows, to compile this, along with
+toolchain, for example, rtools in Windows, to build `dsdp`, along with
 `devtools` package.
 
 ## Usage
 
-Please refer to the tutorials
+Please refer to the tutorial and the reference in
 [tsuchiya-lab.github.io/dsdp/](https://tsuchiya-lab.github.io/dsdp/).
 
 ## Acknowledgements

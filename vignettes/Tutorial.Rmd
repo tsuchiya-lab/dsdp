@@ -9,7 +9,7 @@ thanks: |
 author:
   - Satoshi Kakihara^[National Graduate Institute for Policy Studies, skakihara@gmail.com]
   - Takashi Tsuchiya^[National Graduate Institute for Policy Studies, tsuchiya@grips.ac.jp]
-date: October 31st, 2022
+date: November 11th, 2022
 output:
   pdf_document:
     toc: false
@@ -234,11 +234,11 @@ summary(gm1, nmax=5, estonly=TRUE)
 
 The columns of `deg`, `mu1` and  `sig1` indicate the degree of polynomials, 
 mean, and standard deviation, respectively.
-And the column of `mu` and `sig` indicate the scaled mean and standard deviation,
+And the columns of `mu` and `sig` indicate the scaled mean and standard deviation,
  respectively.
 
 The column of `aic` indicates AIC and that of `accuracy` does the accuracy
-of underlying SDP solver, whose value around $1.0^{-7}$ is 
+of the underlying SDP solver, whose value around $1.0^{-7}$ is 
 sufficient for estimation under IEEE 754  
 double precision.
 If sufficient accuracy is not achieved because of numerical difficulty, 
@@ -352,12 +352,12 @@ We stop doing estimation here.
 <!-- In our heuristics, if we can confine up to 0.01 in `sdlist`, we can achieve
 reasonable estimates. -->
 
-### Some Notes
-Using `plot.gaussmodel`, we can plot cumulative distribution functions
-by `cum=TRUE`:
+### Notes
+Using `plot.gaussmodel`, we can plot cumulative distributions
+by setting `cum=TRUE`:
 
 ```{r, eval=TRUE, out.height="80%", out.width="70%"}
-plot(gm1, cum=TRUE, nmax=1)
+plot(gm1, cum=TRUE)
 ```
 
 For more details, see `?plot.gaussmodel`.
@@ -535,12 +535,12 @@ plot(em1)
 Theoretically, we can refine estimation as you like, but
 we stop estimation here.
 
-### Some Notes
-Using `plot.expmodel`, we can plot cumulative distribution functions
-by `cum=TRUE`:
+### Notes
+Using `plot.expmodel`, we can plot cumulative distributions
+by setting `cum=TRUE`:
 
 ```{r, eval=TRUE, out.height="80%", out.width="70%"}
-plot(em1, cum=TRUE, nmax=1)
+plot(em1, cum=TRUE)
 ```
 
 For more details, see `?plot.expmodel`.

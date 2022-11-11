@@ -30,5 +30,5 @@ gmodel <- gaussmodel(mix2gauss$n200)
 summary(gmodel)
 }
 \seealso{
-\link{gaussmodel} \link{plot.gaussmodel} \link{estimate.gaussmodel}
+\code{\link[=gaussmodel]{gaussmodel()}} \code{\link[=plot.gaussmodel]{plot.gaussmodel()}} \code{\link[=estimate.gaussmodel]{estimate.gaussmodel()}}
 }

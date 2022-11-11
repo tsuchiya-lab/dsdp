@@ -42,6 +42,6 @@ yv <- pdf_gaussmodel(gmodel$coeffs[[1]], gmodel$result[1, "mu1"],
  gmodel$result[1, "sig1"], x)
 }
 \seealso{
-gaussmodel summary.gaussmodel estimate.gaussmodel
-func.gaussmodel plot.gaussmodel cdf_gaussmodel
+\code{\link[=gaussmodel]{gaussmodel()}} \code{\link[=summary.gaussmodel]{summary.gaussmodel()}} \code{\link[=estimate.gaussmodel]{estimate.gaussmodel()}}
+\code{\link[=func.gaussmodel]{func.gaussmodel()}} \code{\link[=plot.gaussmodel]{plot.gaussmodel()}} \code{\link[=cdf_gaussmodel]{cdf_gaussmodel()}}
 }

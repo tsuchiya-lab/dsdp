@@ -29,5 +29,5 @@ emodel <- expmodel(mixexpgamma$n200)
 summary(emodel)
 }
 \seealso{
-expmodel plot.expmodel estimate.expmodel
+\code{\link[=expmodel]{expmodel()}} \code{\link[=plot.expmodel]{plot.expmodel()}} \code{\link[=estimate.expmodel]{estimate.expmodel()}}
 }

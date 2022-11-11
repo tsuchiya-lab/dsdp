@@ -16,10 +16,12 @@ A numeric vector of random numbers whose a density is described
 in Description.
 }
 \description{
-Generate mix gaussian random numbers whose density is
-\deqn{\frac{0.3}{\sqrt{2 \pi 0.5^2}}\exp(\frac{(x+1)^2}{2 \cdot 0.5^2}) +
-\frac{0.7}{\sqrt{2 \pi 0.5^2}}\exp(\frac{(x-1)^2}{2 \cdot 0.5^2}).}
+Generate mix gaussian random numbers whose density is:
+\deqn{\frac{0.3}{\sqrt{2 \pi 0.5^2}}
+\exp\left(\frac{(x+1)^2}{2 \cdot 0.5^2}\right) +
+\frac{0.7}{\sqrt{2 \pi 0.5^2}}
+\exp\left(\frac{(x-1)^2}{2 \cdot 0.5^2}\right)}.
 }
 \seealso{
-mix2gauss_fun
+\code{\link[=mix2gauss_fun]{mix2gauss_fun()}}
 }

@@ -56,6 +56,6 @@ emodel <- expmodel(mixexpgamma$n200)
 plot(emodel)
 }
 \seealso{
-expmodel summary.expmodel func.expmodel pdf_expmodel
-cdf_expmodel
+\code{\link[=expmodel]{expmodel()}} \code{\link[=summary.expmodel]{summary.expmodel()}} \code{\link[=func.expmodel]{func.expmodel()}} \code{\link[=pdf_expmodel]{pdf_expmodel()}}
+\code{\link[=cdf_expmodel]{cdf_expmodel()}}
 }

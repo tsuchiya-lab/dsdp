@@ -19,12 +19,12 @@ A vector of values of an incomplete gamma function.
 Evaluate an incomplete gamma function:
 \deqn{\gamma(a, x) = \int_{0}^{x} t^{a-1} e^{-t}dt,}
 using SLATEC \code{dgami} in \url{https://netlib.org/slatec/}.
-When \eqn{a \gt 0} and \eqn{x \ge 0}, compute the result, otherwise the value
-is \code{NaN}.
+When (\eqn{x > 0} and \eqn{a \ge 0}) or (\eqn{x \ge 0} and \eqn{a > 0}),
+compute the result, otherwise the value is \code{NaN}.
 }
 \examples{
 igamma(1, 1)
 }
 \seealso{
-igammac
+\code{\link[=igammac]{igammac()}}
 }
