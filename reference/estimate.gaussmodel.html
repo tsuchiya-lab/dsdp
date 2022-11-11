@@ -85,8 +85,8 @@ Then it sorts the results by AIC.</p>
 
 
 <dt>deglist</dt>
-<dd><p>A vector of degrees of polynomials. They should be positive
-even numbers.</p></dd>
+<dd><p>A vector of degrees of polynomials. The element should be
+positive even numbers.</p></dd>
 
 
 <dt>mulist</dt>
@@ -95,7 +95,7 @@ even numbers.</p></dd>
 
 <dt>sdlist</dt>
 <dd><p>A vector of standard deviations for Gaussian-based models.
-They should be larger than 0.</p></dd>
+The element should be larger than 0.</p></dd>
 
 
 <dt>scaling</dt>
@@ -112,9 +112,10 @@ for recomputing.</p></dd>
 
 
 <dt>stepsize</dt>
-<dd><p>A vector in descending order whose values are between 0 and</p><ol><li><p>If a small step size is supplied, it can attain successful estimates,
-but it might take more iterations.</p></li>
-</ol></dd>
+<dd><p>A vector in descending order whose values are
+between 0 and 1.
+If a small step size is supplied, it can attain successful estimates,
+but it might take more iterations.</p></dd>
 
 
 <dt>verbose</dt>
@@ -130,14 +131,12 @@ but it might take more iterations.</p></li>
     
 
 <p>A <code>gaussmodel</code> object including the estimates.
-Those estimates are stored in <code>model$result</code> with <code>data.frame</code></p>
-
-
-<p>form and <code>model$coeffs</code> in <code>list</code> form.</p>
+Those estimates are stored in <code>model$result</code> with
+<code>data.frame</code> format and <code>model$coeffs</code> in <code>list</code> format.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p>gaussmodel summary.gaussmodel plot.gaussmodel</p></div>
+    <div class="dont-index"><p><code><a href="gaussmodel.html">gaussmodel()</a></code> <code><a href="summary.gaussmodel.html">summary.gaussmodel()</a></code> <code><a href="plot.gaussmodel.html">plot.gaussmodel()</a></code></p></div>
     </div>
 
     <div class="section level2">
@@ -146,30 +145,22 @@ Those estimates are stored in <code>model$result</code> with <code>data.frame</c
 <span class="r-in"><span><span class="va">gmodel</span> <span class="op">&lt;-</span> <span class="fu"><a href="gaussmodel.html">gaussmodel</a></span><span class="op">(</span><span class="va">mix2gauss</span><span class="op">$</span><span class="va">n200</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co">## Estimate a model with parameters</span></span></span>
 <span class="r-in"><span><span class="va">gmodel</span> <span class="op">&lt;-</span> <span class="fu"><a href="estimate.html">estimate</a></span><span class="op">(</span><span class="va">gmodel</span>, deglist<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span>, mulist<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.0</span>, <span class="fl">0.2</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>             sdlist<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.75</span>, <span class="fl">1.0</span>, <span class="fl">1.25</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>             sdlist<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.75</span>, <span class="fl">1.0</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> (2,0,0.75)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Status: Normal Termination.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> (2,0,1)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Status: Normal Termination.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> (2,0,1.25)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Status: Normal Termination.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> (2,0.2,0.75)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Status: Normal Termination.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> (2,0.2,1)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Status: Normal Termination.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> (2,0.2,1.25)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Status: Normal Termination.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> (4,0,0.75)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Status: Normal Termination.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> (4,0,1)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Status: Normal Termination.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> (4,0,1.25)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Status: Normal Termination.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> (4,0.2,0.75)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Status: Normal Termination.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> (4,0.2,1)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Status: Normal Termination.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> (4,0.2,1.25)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Status: Normal Termination.</span>
 </code></pre></div>
     </div>

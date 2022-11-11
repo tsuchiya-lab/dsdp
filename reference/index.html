@@ -51,7 +51,7 @@
     </div>
 
     <div class="section level2">
-      <h2 id="all-functions">All functions<a class="anchor" aria-label="anchor" href="#all-functions"></a></h2>
+      <h2 id="gaussian-based-model">Gaussian-based Model<a class="anchor" aria-label="anchor" href="#gaussian-based-model"></a></h2>
       
       
 
@@ -63,15 +63,136 @@
 
       <dl><dt>
           
-          <code><a href="cdf_expmodel.html">cdf_expmodel()</a></code> 
+          <code><a href="gaussmodel.html">gaussmodel()</a></code> 
         </dt>
-        <dd>Cumulative density function of Expomemtial-based model</dd>
+        <dd>Constructor for S3 class <code>gaussmodel</code></dd>
+      </dl><dl><dt>
+          
+          <code><a href="summary.gaussmodel.html">summary(<i>&lt;gaussmodel&gt;</i>)</a></code> 
+        </dt>
+        <dd>Summary of Gaussian-based model <code>gaussmodel</code> object</dd>
+      </dl><dl><dt>
+          
+          <code><a href="plot.gaussmodel.html">plot(<i>&lt;gaussmodel&gt;</i>)</a></code> 
+        </dt>
+        <dd>Plot a histogram and estimated densities/distributions of
+Gaussian-based model object</dd>
+      </dl><dl><dt>
+          
+          <code><a href="estimate.gaussmodel.html">estimate(<i>&lt;gaussmodel&gt;</i>)</a></code> 
+        </dt>
+        <dd>Estimate Gaussian-based model <code>gaussmodel</code></dd>
+      </dl><dl><dt>
+          
+          <code><a href="func.gaussmodel.html">func(<i>&lt;gaussmodel&gt;</i>)</a></code> 
+        </dt>
+        <dd>Return the evaluation of a vector with Gaussian-based model</dd>
+      </dl><dl><dt>
+          
+          <code><a href="gauss_est.html">gauss_est()</a></code> 
+        </dt>
+        <dd>Estimate coefficients of a polynomial in Gaussian-based model</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pdf_gaussmodel.html">pdf_gaussmodel()</a></code> 
+        </dt>
+        <dd>Probability density function of Gaussian-based model</dd>
       </dl><dl><dt>
           
           <code><a href="cdf_gaussmodel.html">cdf_gaussmodel()</a></code> 
         </dt>
-        <dd>Cumulative density function of Gaussian-based model</dd>
+        <dd>Cumulative distribution function of Gaussian-based model</dd>
+      </dl></div><div class="section level2">
+      <h2 id="exponential-based-model">Exponential-based Model<a class="anchor" aria-label="anchor" href="#exponential-based-model"></a></h2>
+      
+      
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="expmodel.html">expmodel()</a></code> 
+        </dt>
+        <dd>Constructor for S3 class <code>expmodel</code></dd>
       </dl><dl><dt>
+          
+          <code><a href="summary.expmodel.html">summary(<i>&lt;expmodel&gt;</i>)</a></code> 
+        </dt>
+        <dd>Summary of Exponential-based <code>expmodel</code> object.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="plot.expmodel.html">plot(<i>&lt;expmodel&gt;</i>)</a></code> 
+        </dt>
+        <dd>Plot a histogram and estimated densities/distributions of Exponential-based
+model  object</dd>
+      </dl><dl><dt>
+          
+          <code><a href="estimate.expmodel.html">estimate(<i>&lt;expmodel&gt;</i>)</a></code> 
+        </dt>
+        <dd>Estimate Exponential-based model <code>expmodel</code></dd>
+      </dl><dl><dt>
+          
+          <code><a href="func.expmodel.html">func(<i>&lt;expmodel&gt;</i>)</a></code> 
+        </dt>
+        <dd>Return the evaluation of a vector with Exponential-based
+model</dd>
+      </dl><dl><dt>
+          
+          <code><a href="exp_est.html">exp_est()</a></code> 
+        </dt>
+        <dd>Estimate coefficients of a polynomial in Exponential-based Model</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pdf_expmodel.html">pdf_expmodel()</a></code> 
+        </dt>
+        <dd>Probability density function of Exponential-based model</dd>
+      </dl><dl><dt>
+          
+          <code><a href="cdf_expmodel.html">cdf_expmodel()</a></code> 
+        </dt>
+        <dd>Cumulative distribution function of Expomemtial-based model</dd>
+      </dl></div><div class="section level2">
+      <h2 id="generic-functions">Generic Functions<a class="anchor" aria-label="anchor" href="#generic-functions"></a></h2>
+      
+      
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="estimate.html">estimate()</a></code> 
+        </dt>
+        <dd>Generic Method for estimation</dd>
+      </dl><dl><dt>
+          
+          <code><a href="func.html">func()</a></code> 
+        </dt>
+        <dd>Generic Method for evaluate the estimate</dd>
+      </dl><dl><dt>
+          
+          <code><a href="dsdp.html">dsdp</a></code> 
+        </dt>
+        <dd>dsdp: Density Estimation using Semidefinite Programming</dd>
+      </dl></div><div class="section level2">
+      <h2 id="miscellaneous-functions">Miscellaneous Functions<a class="anchor" aria-label="anchor" href="#miscellaneous-functions"></a></h2>
+      
+      
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
           
           <code><a href="databinning.html">databinning()</a></code> 
         </dt>
@@ -83,159 +204,14 @@
         <dd>Compute the mean and the standard deviation of a data set</dd>
       </dl><dl><dt>
           
-          <code><a href="dsdp.html">dsdp</a></code> 
-        </dt>
-        <dd>dsdp: Density Estimation using Semidefinite Programming</dd>
-      </dl><dl><dt>
-          
-          <code><a href="estimate.html">estimate()</a></code> 
-        </dt>
-        <dd>Generic Method for estimation</dd>
-      </dl><dl><dt>
-          
-          <code><a href="estimate.expmodel.html">estimate(<i>&lt;expmodel&gt;</i>)</a></code> 
-        </dt>
-        <dd>Estimate Exponential-based model <code>expmodel</code></dd>
-      </dl><dl><dt>
-          
-          <code><a href="estimate.gaussmodel.html">estimate(<i>&lt;gaussmodel&gt;</i>)</a></code> 
-        </dt>
-        <dd>Estimate Gaussian-based model <code>gaussmodel</code></dd>
-      </dl><dl><dt>
-          
-          <code><a href="eval_poly.html">eval_poly()</a></code> 
-        </dt>
-        <dd>Evaluate a polynomial</dd>
-      </dl><dl><dt>
-          
-          <code><a href="exp_est.html">exp_est()</a></code> 
-        </dt>
-        <dd>Estimate coefficients of a polynomial in Exponential-based Model</dd>
-      </dl><dl><dt>
-          
-          <code><a href="expmodel.html">expmodel()</a></code> 
-        </dt>
-        <dd>Constructor for S3 class <code>expmodel</code></dd>
-      </dl><dl><dt>
-          
-          <code><a href="func.html">func()</a></code> 
-        </dt>
-        <dd>Generic Method for evaluate the estimate</dd>
-      </dl><dl><dt>
-          
-          <code><a href="func.expmodel.html">func(<i>&lt;expmodel&gt;</i>)</a></code> 
-        </dt>
-        <dd>Return the evaluation of a vector with a distribution of Exponential-based
-model</dd>
-      </dl><dl><dt>
-          
-          <code><a href="func.gaussmodel.html">func(<i>&lt;gaussmodel&gt;</i>)</a></code> 
-        </dt>
-        <dd>Return the evaluation of a vector with a distribution of Gaussian-based
-model</dd>
-      </dl><dl><dt>
-          
-          <code><a href="gauss_est.html">gauss_est()</a></code> 
-        </dt>
-        <dd>Estimate coefficients of a polynomial in Gaussian-based model</dd>
-      </dl><dl><dt>
-          
-          <code><a href="gaussmodel.html">gaussmodel()</a></code> 
-        </dt>
-        <dd>Constructor for S3 class <code>gaussmodel</code></dd>
-      </dl><dl><dt>
-          
           <code><a href="histmean.html">histmean()</a></code> 
         </dt>
         <dd>Compute the mean of a data set</dd>
       </dl><dl><dt>
           
-          <code><a href="igamma.html">igamma()</a></code> 
+          <code><a href="eval_poly.html">eval_poly()</a></code> 
         </dt>
-        <dd>Incomplete Gamma Function</dd>
-      </dl><dl><dt>
-          
-          <code><a href="igammac.html">igammac()</a></code> 
-        </dt>
-        <dd>Complementary Incomplete Gamma Function</dd>
-      </dl><dl><dt>
-          
-          <code><a href="mix2gauss.html">mix2gauss</a></code> 
-        </dt>
-        <dd>Mixture of 2 Gauss Distributions $4.2.1</dd>
-      </dl><dl><dt>
-          
-          <code><a href="mix2gaussHist.html">mix2gaussHist</a></code> 
-        </dt>
-        <dd>Mixture of 2 Gauss Distributions $4.2.1, histogram version</dd>
-      </dl><dl><dt>
-          
-          <code><a href="mix2gauss_fun.html">mix2gauss_fun()</a></code> 
-        </dt>
-        <dd>A density function of a mixed gaussian distribution</dd>
-      </dl><dl><dt>
-          
-          <code><a href="mix2gauss_gen.html">mix2gauss_gen()</a></code> 
-        </dt>
-        <dd>Generate mixed Gaussian random numbers</dd>
-      </dl><dl><dt>
-          
-          <code><a href="mix3gauss.html">mix3gauss</a></code> 
-        </dt>
-        <dd>Mixture of 3 Gaussian Distributions $4.2.2</dd>
-      </dl><dl><dt>
-          
-          <code><a href="mix3gauss_fun.html">mix3gauss_fun()</a></code> 
-        </dt>
-        <dd>A density function of mixed gaussian distribution</dd>
-      </dl><dl><dt>
-          
-          <code><a href="mix3gauss_gen.html">mix3gauss_gen()</a></code> 
-        </dt>
-        <dd>Generate Mixed Gaussian Random Numbers</dd>
-      </dl><dl><dt>
-          
-          <code><a href="mixExpGammaHist.html">mixExpGammaHist</a></code> 
-        </dt>
-        <dd>Mixture of Exponential Distribution and Gamma Distribution,
-histogram version.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="mixexpgamma.html">mixexpgamma</a></code> 
-        </dt>
-        <dd>Mixture of Exponential Distribution and Gamma Distribution</dd>
-      </dl><dl><dt>
-          
-          <code><a href="mixexpgamma_fun.html">mixexpgamma_fun()</a></code> 
-        </dt>
-        <dd>A density function of Mixed Exponential and Gamma Distributions</dd>
-      </dl><dl><dt>
-          
-          <code><a href="mixexpgamma_gen.html">mixexpgamma_gen()</a></code> 
-        </dt>
-        <dd>Generate random numbers of Mixed Exponential and Gamma Distributions</dd>
-      </dl><dl><dt>
-          
-          <code><a href="pdf_expmodel.html">pdf_expmodel()</a></code> 
-        </dt>
-        <dd>Probability density function of Exponential-based model</dd>
-      </dl><dl><dt>
-          
-          <code><a href="pdf_gaussmodel.html">pdf_gaussmodel()</a></code> 
-        </dt>
-        <dd>Probability density function of Gaussian-based model</dd>
-      </dl><dl><dt>
-          
-          <code><a href="plot.expmodel.html">plot(<i>&lt;expmodel&gt;</i>)</a></code> 
-        </dt>
-        <dd>Plot a histogram and estimated densities/distributions of Exponential-based
-model  object</dd>
-      </dl><dl><dt>
-          
-          <code><a href="plot.gaussmodel.html">plot(<i>&lt;gaussmodel&gt;</i>)</a></code> 
-        </dt>
-        <dd>Plot a histogram and estimated densities/distributions of
-Gaussian-based model object</dd>
+        <dd>Evaluate a polynomial</dd>
       </dl><dl><dt>
           
           <code><a href="polyaxb.html">polyaxb()</a></code> 
@@ -248,16 +224,84 @@ Gaussian-based model object</dd>
         <dd>printf</dd>
       </dl><dl><dt>
           
-          <code><a href="summary.expmodel.html">summary(<i>&lt;expmodel&gt;</i>)</a></code> 
+          <code><a href="igamma.html">igamma()</a></code> 
         </dt>
-        <dd>Summary of Exponential-based <code>expmodel</code> object.</dd>
+        <dd>Incomplete Gamma Function</dd>
       </dl><dl><dt>
           
-          <code><a href="summary.gaussmodel.html">summary(<i>&lt;gaussmodel&gt;</i>)</a></code> 
+          <code><a href="igammac.html">igammac()</a></code> 
         </dt>
-        <dd>Summary of Gaussian-based model <code>gaussmodel</code> object</dd>
+        <dd>Complementary Incomplete Gamma Function</dd>
+      </dl></div><div class="section level2">
+      <h2 id="dataset-and-related-functions">Dataset and Related Functions<a class="anchor" aria-label="anchor" href="#dataset-and-related-functions"></a></h2>
+      
+      
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="mix2gauss.html">mix2gauss</a></code> 
+        </dt>
+        <dd>Datasets of Mixture of 2 Gaussian Distributions</dd>
+      </dl><dl><dt>
+          
+          <code><a href="mix2gaussHist.html">mix2gaussHist</a></code> 
+        </dt>
+        <dd>Dataset of Mixture of 2 Gaussian Distributions: Histogram version</dd>
+      </dl><dl><dt>
+          
+          <code><a href="mix2gauss_fun.html">mix2gauss_fun()</a></code> 
+        </dt>
+        <dd>A density function of mixed Gaussian distributions</dd>
+      </dl><dl><dt>
+          
+          <code><a href="mix2gauss_gen.html">mix2gauss_gen()</a></code> 
+        </dt>
+        <dd>Generate mixed Gaussian random numbers</dd>
+      </dl><dl><dt>
+          
+          <code><a href="mix3gauss.html">mix3gauss</a></code> 
+        </dt>
+        <dd>Datasets of Mixture of 3 Gaussian Distributions</dd>
+      </dl><dl><dt>
+          
+          <code><a href="mix3gauss_fun.html">mix3gauss_fun()</a></code> 
+        </dt>
+        <dd>A density function of mixed gaussian distribution</dd>
+      </dl><dl><dt>
+          
+          <code><a href="mix3gauss_gen.html">mix3gauss_gen()</a></code> 
+        </dt>
+        <dd>Generate Mixed Gaussian Random Numbers</dd>
+      </dl><dl><dt>
+          
+          <code><a href="mixexpgamma.html">mixexpgamma</a></code> 
+        </dt>
+        <dd>Dataset of Mixture of Exponential Distribution and Gamma Distribution</dd>
+      </dl><dl><dt>
+          
+          <code><a href="mixExpGammaHist.html">mixExpGammaHist</a></code> 
+        </dt>
+        <dd>Dataset of Mixture of Exponential Distribution and Gamma Distribution:
+Histogram Version</dd>
+      </dl><dl><dt>
+          
+          <code><a href="mixexpgamma_fun.html">mixexpgamma_fun()</a></code> 
+        </dt>
+        <dd>A density function of Mixed Exponential and Gamma Distributions</dd>
+      </dl><dl><dt>
+          
+          <code><a href="mixexpgamma_gen.html">mixexpgamma_gen()</a></code> 
+        </dt>
+        <dd>Generate random numbers of Mixed Exponential and Gamma Distributions</dd>
       </dl></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">
