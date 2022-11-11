@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   ProblemFormulations: ProblemFormulations.html
   Tutorial: Tutorial.html
-last_built: 2022-11-11T03:53Z
+last_built: 2022-11-11T04:19Z
 urls:
   reference: https://tsuchiya-lab.github.io/dsdp/reference
   article: https://tsuchiya-lab.github.io/dsdp/articles
