@@ -44,6 +44,11 @@ toolchain, for example, rtools in Windows, to build `dsdp`, along with
 Please refer to the tutorial and the reference in
 [tsuchiya-lab.github.io/dsdp/](https://tsuchiya-lab.github.io/dsdp/).
 
+pdf versions of articles are also available: [A Tutorial for
+dsdp](https://github.com/tsuchiya-lab/dsdp/blob/main/doc/Tutorial.pdf),
+[Problem Formulations for
+dsdp](https://github.com/tsuchiya-lab/dsdp/blob/main/doc/ProblemFormulations.pdf).
+
 ## Acknowledgements
 
 This research was supported in part with Grant-in-Aid for Scientific
