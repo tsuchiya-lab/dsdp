@@ -1,10 +1,11 @@
 #include <math.h>
-#include <R.h>
-#include <R_ext/BLAS.h>
-#include <R_ext/Lapack.h>
 #include "clp.h"
 #include "clpsol.h"
 #include "clpmisc.h"
+#include <R.h>
+#include <R_ext/BLAS.h>
+#include <R_ext/Lapack.h>
+
 
 double iprod(const vecCLP *x, const vecCLP *s)
 {
@@ -131,7 +132,7 @@ CLP_INT compute_Aty(const ACLP *A, const double *y, vecCLP *z)
         CLP_INT incy = 1;
         CLP_INT incz = 1;
         F77_NAME(dgemv)(&trans, &nLP, &m, &alpha, A->LP, &nLP, y, &incy,
-            &beta, z->LP, &incz);
+            &beta, z->LP, &incz FCONE);
     }
     if (nblkSDP > 0)
     {
@@ -200,7 +201,7 @@ void compute_Rp(const double *b, const ACLP *A, const vecCLP *x, double *Rp)
         CLP_INT incx = 1;
         CLP_INT incy = 1;
         F77_NAME(dgemv)(&trans, &nLP, &m, &alpha, A->LP, &nLP, x->LP, &incx,
-            &beta, Rp, &incy);
+            &beta, Rp, &incy FCONE);
     }
     if (nblkSDP > 0)
     {
@@ -214,7 +215,7 @@ void compute_Rp(const double *b, const ACLP *A, const vecCLP *x, double *Rp)
             CLP_INT n1 = A->nvblkSDP[k];
             CLP_INT n2 = n1 * n1;
             F77_NAME(dgemv)(&trans, &n2, &m, &alpha, A->SDP[k], &n2,
-                x->SDP[k], &incx, &beta, Rp, &incy);
+                x->SDP[k], &incx, &beta, Rp, &incy FCONE);
         }
     }
 }
@@ -683,11 +684,11 @@ CLP_INT compute_stepsize(const regionInfo *rinfo, const CLP_INT rid,
                 double a1 = 1.0;
 // printvec(n2, Z);
                 F77_CALL(dtrmm)(&side, &uplo, &transa, &diag, &n1, &n1, &a1,
-                                d05inv->SDP[sidx], &n1, Z, &n1);
+                                d05inv->SDP[sidx], &n1, Z, &n1 FCONE FCONE FCONE FCONE);
 // printvec(n2, Z);
                 side = 'R';
                 F77_CALL(dtrmm)(&side, &uplo, &transa, &diag, &n1, &n1, &a1,
-                                d05inv->SDP[sidx], &n1, Z, &n1);
+                                d05inv->SDP[sidx], &n1, Z, &n1 FCONE FCONE FCONE FCONE);
 // printvec(n2, Z);
                 double lmd;
                 CLP_INT m1 = 0;
@@ -709,10 +710,10 @@ CLP_INT compute_stepsize(const regionInfo *rinfo, const CLP_INT rid,
                 F77_NAME(dcopy)(&n2, ds_s->SDP[sidx], &incx, Z, &incx);
                 side = 'L';
                 F77_CALL(dtrmm)(&side, &uplo, &transa, &diag, &n1, &n1, &a1,
-                                d05inv->SDP[sidx], &n1, Z, &n1);
+                                d05inv->SDP[sidx], &n1, Z, &n1 FCONE FCONE FCONE FCONE);
                 side = 'R';
                 F77_CALL(dtrmm)(&side, &uplo, &transa, &diag, &n1, &n1, &a1,
-                                d05inv->SDP[sidx], &n1, Z, &n1);
+                                d05inv->SDP[sidx], &n1, Z, &n1 FCONE FCONE FCONE FCONE);
                 m1 = 0;
                 info = compute_minEig(n1, Z, &lmd, &m1);
 // CLP_PRINTF("cstempd: %d, %d\n", idx, info);
@@ -1112,7 +1113,7 @@ CLP_INT feasibility(const dataCLP *data, const regionInfo *rinfo,
                     double beta = 0.0;
                     double val;
                     F77_NAME(dgemm)(&transa, &transb, &n1, &n1, &n1, &alpha,
-                        x->SDP[k], &n1, s->SDP[k], &n1, &beta, TZ, &n1);
+                        x->SDP[k], &n1, s->SDP[k], &n1, &beta, TZ, &n1 FCONE FCONE);
                     info = det(n1, TZ, &val);
                     CLP_FREE(TZ);
                     CHECKINFO(info);

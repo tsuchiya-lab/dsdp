@@ -58,7 +58,7 @@ CLP_INT compute_Qx(const char trans, const CLP_INT m, const CLP_INT n,
     double *work = NULL;
     CLP_INT n1 = 1;
     F77_NAME(dormqr)(&side, &trans, &m, &n1, &n, A, &m, tau, x, &m, 
-        &work_query, &lwork, &info1);
+        &work_query, &lwork, &info1 FCONE FCONE);
     if (info1 != 0)
     {
         info = ERROR_QX;
@@ -69,7 +69,7 @@ CLP_INT compute_Qx(const char trans, const CLP_INT m, const CLP_INT n,
     CHECKNULL2(work);
 
     F77_NAME(dormqr)(&side, &trans, &m, &n1, &n, A, &m, tau, x, &m, 
-        work, &lwork, &info1);
+        work, &lwork, &info1 FCONE FCONE);
     if (info1 != 0)
     {
         info = ERROR_QX;
@@ -94,7 +94,7 @@ void solve_Rx(const char trans, const CLP_INT m, const CLP_INT n,
     char diag = 'N';
     CLP_INT incx = 1;
 
-    F77_NAME(dtrsv)(&uplo, &trans, &diag, &n, R, &m, x, &incx);
+    F77_NAME(dtrsv)(&uplo, &trans, &diag, &n, R, &m, x, &incx FCONE FCONE FCONE);
 }
 
 /*
@@ -180,7 +180,7 @@ CLP_INT compute_minEig(const CLP_INT n, double *S, double *w, CLP_INT *m)
 		 NULL, &n, NULL,
 		 &work_query, &lwork,
 		 &iwork_query, &liwork,
-		 &info1);
+		 &info1 FCONE FCONE FCONE);
     if (info1 != 0)
     {   // CLP_PRINTF("mineig0 %d\n", info1);
         info = ERROR_EIG;
@@ -201,7 +201,7 @@ CLP_INT compute_minEig(const CLP_INT n, double *S, double *w, CLP_INT *m)
 		 NULL, &n, NULL,
 		 work, &lwork,
 		 iwork, &liwork,
-		 &info1);
+		 &info1 FCONE FCONE FCONE);
     if (info1 != 0)
     {   //CLP_PRINTF("mineig1 %d\n", info1);
         info = ERROR_EIG;
@@ -228,7 +228,7 @@ CLP_INT compute_svd(const CLP_INT n, double *A, double *s)
     F77_NAME(dgesvd)(&jobu, &jobvt, &n,
 		 &n, A, &n, s,
 		 NULL, &n, Vt, &n,
-		 &work_query, &lwork, &info1);
+		 &work_query, &lwork, &info1 FCONE FCONE);
     if (info1 != 0)
     {
         info = ERROR_SVD;
@@ -240,7 +240,7 @@ CLP_INT compute_svd(const CLP_INT n, double *A, double *s)
     F77_NAME(dgesvd)(&jobu, &jobvt, &n,
 		 &n, A, &n, s,
 		 NULL, &n, Vt, &n,
-		 work, &lwork, &info1);
+		 work, &lwork, &info1 FCONE FCONE);
     if (info1 != 0)
     {
         info = ERROR_SVD;
@@ -396,7 +396,7 @@ CLP_INT compute_chol(const CLP_INT n, double *x, const CLP_INT ldx)
     INFO_CLP info = SUCCESS;
     CLP_INT info1 = 0;
     const char uplo = 'U';
-    F77_NAME(dpotrf)(&uplo, &n, x, &ldx, &info1);
+    F77_NAME(dpotrf)(&uplo, &n, x, &ldx, &info1 FCONE);
     if (info1 != 0)
     {
         info = ERROR_CHOL;
@@ -460,7 +460,7 @@ printmat(n, n, ginv);
     char diag = 'N';
     double alpha = 1.0;
     F77_NAME(dtrmm)(&side, &uplo, &trans, &diag, &n, &n, &alpha,
-        xChol, &n, ginv, &n);
+        xChol, &n, ginv, &n FCONE FCONE FCONE FCONE);
     sv = (double*) CLP_MALLOC(sizeof(double)*n);
     sv05inv = (double*) CLP_MALLOC(sizeof(double)*n);
     CHECKNULL2(sv);
@@ -488,11 +488,13 @@ printmat(n, n, ginv);
     trans = 'T';
     diag = 'N';
     alpha = 1.0;
-    F77_NAME(dtrmm)(&side, &uplo, &trans, &diag, &n, &n, &alpha, xChol, &n, g, &n);
+    F77_NAME(dtrmm)(&side, &uplo, &trans, &diag, &n, &n, &alpha, xChol, &n, g, &n
+            FCONE FCONE FCONE FCONE);
 
     mul_diagMat('L', n, n, ginv, n, sv);
     side = 'R';
-    F77_NAME(dtrsm)(&side, &uplo, &trans, &diag, &n, &n, &alpha, xChol, &n, ginv, &n);
+    F77_NAME(dtrsm)(&side, &uplo, &trans, &diag, &n, &n, &alpha, xChol, &n, ginv, &n
+        FCONE FCONE FCONE FCONE);
 
 EXCEPTION:
     CLP_FREE(xChol);
@@ -514,10 +516,12 @@ void scalebackPrimalSDP(const CLP_INT n, const double *xs, const double *g,
     char transb = 'N';
     double alpha = 1.0;
     double beta = 0.0;
-    F77_NAME(dgemm)(&transa, &transb, &n, &n, &n, &alpha, g, &n, xs, &n, &beta, z, &n);
+    F77_NAME(dgemm)(&transa, &transb, &n, &n, &n, &alpha, g, &n, xs, &n, &beta, z, &n
+            FCONE FCONE);
 
     transb = 'T';
-    F77_NAME(dgemm)(&transa, &transb, &n, &n, &n, &alpha, z, &n, g, &n, &beta, x, &n);
+    F77_NAME(dgemm)(&transa, &transb, &n, &n, &n, &alpha, z, &n, g, &n, &beta, x, &n
+        FCONE FCONE);
 
 // EXCEPTION:
 //     CLP_FREE(z);
@@ -536,10 +540,12 @@ void scaleDualSDP(const CLP_INT n, const double *s, const double *g,  double *z,
     char transb = 'N';
     double alpha = 1.0;
     double beta = 0.0;
-    F77_NAME(dgemm)(&transa, &transb, &n, &n, &n, &alpha, g, &n, s, &n, &beta, z, &n);
+    F77_NAME(dgemm)(&transa, &transb, &n, &n, &n, &alpha, g, &n, s, &n, &beta, z, &n
+            FCONE FCONE);
 
     transa = 'N';
-    F77_NAME(dgemm)(&transa, &transb, &n, &n, &n, &alpha, z, &n, g, &n, &beta, ss, &n);
+    F77_NAME(dgemm)(&transa, &transb, &n, &n, &n, &alpha, z, &n, g, &n, &beta, ss, &n
+            FCONE FCONE);
 
 // EXCEPTION:
 //     CLP_FREE(z);
@@ -558,10 +564,12 @@ void scalebackDualSDP(const CLP_INT n, const double *ss, const double *ginv,
     char transb = 'N';
     double alpha = 1.0;
     double beta = 0.0;
-    F77_NAME(dgemm)(&transa, &transb, &n, &n, &n, &alpha, ginv, &n, ss, &n, &beta, z, &n);
+    F77_NAME(dgemm)(&transa, &transb, &n, &n, &n, &alpha, ginv, &n, ss, &n, &beta, z, &n
+            FCONE FCONE);
 
     transa = 'N';
-    F77_NAME(dgemm)(&transa, &transb, &n, &n, &n, &alpha, z, &n, ginv, &n, &beta, s, &n);
+    F77_NAME(dgemm)(&transa, &transb, &n, &n, &n, &alpha, z, &n, ginv, &n, &beta, s, &n
+        FCONE FCONE);
 
 // EXCEPTION:
 //     CLP_FREE(z);
@@ -576,9 +584,9 @@ void compute_quadcorSDP(const CLP_INT n, const double *dx,
     double alpha = 0.5;
     double beta = 0.0;
     F77_NAME(dgemm)(&transa, &transb, &n, &n, &n, &alpha, dx, &n, ds, &n, 
-        &beta, TZ1, &n);
+        &beta, TZ1, &n FCONE FCONE);
     F77_NAME(dgemm)(&transa, &transb, &n, &n, &n, &alpha, ds, &n, dx, &n,
-        &beta, TZ2, &n);
+        &beta, TZ2, &n FCONE FCONE);
 
     CLP_INT n2 = n*n;
     for (size_t i=0; i<n2; ++i)
@@ -593,9 +601,11 @@ void compute_quadcorSDP(const CLP_INT n, const double *dx,
     char side = 'L';
     char uplo = 'U';
     char diag = 'N';
-    F77_NAME(dtrmm)(&side, &uplo, &transa, &diag, &n, &n, &alpha, dinv, &n, TZ1, &n);
+    F77_NAME(dtrmm)(&side, &uplo, &transa, &diag, &n, &n, &alpha, dinv, &n, TZ1, &n
+            FCONE FCONE FCONE FCONE);
     side = 'R';
-    F77_NAME(dtrmm)(&side, &uplo, &transa, &diag, &n, &n, &alpha, dinv, &n, TZ2, &n);
+    F77_NAME(dtrmm)(&side, &uplo, &transa, &diag, &n, &n, &alpha, dinv, &n, TZ2, &n
+            FCONE FCONE FCONE FCONE);
 
     for (size_t i=0; i<n2; ++i)
     {
@@ -661,7 +671,7 @@ CLP_INT detS(const CLP_INT n, const double *x, double *val)
     memcpy(TZ, x, sizeof(double)*n*n);
 
     char uplo = 'U';
-    F77_NAME(dpotrf)(&uplo, &n, TZ, &n, &info1);
+    F77_NAME(dpotrf)(&uplo, &n, TZ, &n, &info1 FCONE);
     if (info1 != 0)
     {
         info = ERROR_CHOL;

@@ -6,7 +6,7 @@ Authors@R: c(
         role = c("aut", "cre")),
     person("Takashi",  "Tsuchiya", email = "tsuchiya@grips.ac.jp",
         role = "aut"))
-Description: Density estimation with Semidefinite Programming.
+Description: Density estimation with semidefinite programming.
     The models of probability density functions are Gaussian or exponential
     distributions with polynomial correction terms. Using a maximum likelihood
     method, it computes parameters of Gaussian or exponential distributions

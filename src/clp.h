@@ -8,6 +8,10 @@
 #include <stdbool.h>
 #include <math.h>
 
+// #ifndef USE_FC_LEN_T
+// #define USE_FC_LEN_T
+// #endif
+
 #include <R.h>
 
 #ifndef M_PI

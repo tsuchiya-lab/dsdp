@@ -1,9 +1,10 @@
 #include <math.h>
-#include <Rinternals.h>
-#include <R_ext/BLAS.h>
 #include "clp.h"
 #include "clpmisc.h"
 #include "clputil.h"
+#include <Rinternals.h>
+#include <R_ext/BLAS.h>
+
 
 /*
     Moment of Exponential Distribution
