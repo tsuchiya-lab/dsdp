@@ -1049,9 +1049,10 @@ CLP_INT feasibility(const dataCLP *data, const regionInfo *rinfo,
 {
     INFO_CLP info = SUCCESS;
     CLPinfo *clpinfo = data->clpinfo;
-    coeffCLP *nu;
-    double *Rp=NULL, *TZ=NULL;
+    coeffCLP *nu=NULL;
     double nrmRp, nrmRd, nrmb, nrmc;
+    double *Rp=NULL, *TZ=NULL;
+    vecCLP *Rd=NULL, *Aty=NULL;
     CLP_INT m, nLP, nblkSDP;
     m = clpinfo->m;
     nLP = clpinfo->nLP;
@@ -1065,7 +1066,6 @@ CLP_INT feasibility(const dataCLP *data, const regionInfo *rinfo,
     nrmb = F77_NAME(dnrm2)(&m, data->b, &incx);
     *pinfeas = nrmRp / (1.0 + nrmb);
 
-    vecCLP *Rd=NULL, *Aty=NULL;
     Rd = create_vecCLP(clpinfo);
     Aty = create_vecCLP(clpinfo);
     CHECKNULL2(Rd);
@@ -1165,7 +1165,11 @@ CLP_INT solver(const dataCLP *data, const OPTIONS *options, RESULTS *results)
     regionInfo *rinfo=NULL;
     vecCLP *x=NULL, *s=NULL;
     double *y=NULL, nu0;
-    CLP_INT m, regionN, last0region, last1region;
+    vecCLP *dx=NULL, *ds=NULL;
+    double *dy=NULL;
+    CLP_INT m, regionN, last0region; //, last1region;
+    itrCLP *snapshot=NULL;
+    
     m = clpinfo->m;
     // nLP = clpinfo->nLP;
     // nblkSDP = clpinfo->nblkSDP;
@@ -1184,7 +1188,7 @@ CLP_INT solver(const dataCLP *data, const OPTIONS *options, RESULTS *results)
     CHECKNULL2(rinfo);
     regionN = rinfo->N;
     last0region = regionN-1;
-    last1region = last0region-1;
+    // last1region = last0region-1;
     nu0 = rinfo->nuv[0];
 
     x = create_vecCLP(clpinfo);
@@ -1205,8 +1209,6 @@ CLP_INT solver(const dataCLP *data, const OPTIONS *options, RESULTS *results)
         init_point(data, clpinfo, rinfo, nu0, x, s, y);
     }
 
-    vecCLP *dx=NULL, *ds=NULL;
-    double *dy=NULL;
     dx = create_vecCLP(clpinfo);
     ds = create_vecCLP(clpinfo);
     dy = create_dvec(m);
@@ -1226,12 +1228,11 @@ CLP_INT solver(const dataCLP *data, const OPTIONS *options, RESULTS *results)
     }
 
     double snapshotmu1, snapshotcriterion1;
-    itrCLP *snapshot=NULL;
     snapshot = create_itrCLP(clpinfo);
     CHECKNULL2(snapshot);
 
-    double gap, relgap, pobj, dobj, pinfeas, dinfeas;
-    double tol0, tol1, feas0, feas1, dg0, dg1, mu0, mu1, criterion0, criterion1;
+    double gap=0.0, relgap=0.0, pobj=0.0, dobj=0.0, pinfeas=0.0, dinfeas=0.0;
+    double tol1=0.0, feas1=0.0, dg0=0.0, dg1=0.0, mu0=0.0, mu1=0.0, criterion0=0.0, criterion1=0.0;
     CLP_INT region0, region1;
     dg0 = iprod(x, s);
     region0 = find_region(rinfo, dg0);
@@ -1241,8 +1242,8 @@ CLP_INT solver(const dataCLP *data, const OPTIONS *options, RESULTS *results)
     info = feasibility(data, rinfo, x, s, y, &gap, &relgap, &pobj, &dobj,
                 &pinfeas, &dinfeas);
     CHECKINFO(info);
-    feas0 = fmax(pinfeas, dinfeas);
-    tol0 = fmax(relgap, feas0);
+    // feas0 = fmax(pinfeas, dinfeas);
+    // tol0 = fmax(relgap, feas0);
     criterion0 = 0.5*relgap + 0.25*(pinfeas + dinfeas);
 
     if (verbose)
@@ -1361,7 +1362,7 @@ CLP_INT solver(const dataCLP *data, const OPTIONS *options, RESULTS *results)
 
         mu0 = mu1;
         dg0 = dg1;
-        tol0 = tol1;
+        // tol0 = tol1;
         criterion0 = criterion1;
     }
 

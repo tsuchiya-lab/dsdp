@@ -1,5 +1,5 @@
 *DECK DGAMMA
-      DOUBLE PRECISION FUNCTION DGAMMA (X)
+      DOUBLE PRECISION FUNCTION dgamm0 (X)
 C***BEGIN PROLOGUE  DGAMMA
 C***PURPOSE  Compute the complete Gamma function.
 C***LIBRARY   SLATEC (FNLIB)
@@ -94,11 +94,11 @@ C
 C COMPUTE GAMMA(X) FOR -XBND .LE. X .LE. XBND.  REDUCE INTERVAL AND FIND
 C GAMMA(1+Y) FOR 0.0 .LE. Y .LT. 1.0 FIRST OF ALL.
 C
-      N = X
+      N = int(X)
       IF (X.LT.0.D0) N = N - 1
       Y = X - N
       N = N - 1
-      DGAMMA = 0.9375D0 + DCSEVL (2.D0*Y-1.D0, GAMCS, NGAM)
+      dgamm0 = 0.9375D0 + DCSEVL (2.D0*Y-1.D0, GAMCS, NGAM)
       IF (N.EQ.0) RETURN
 C
       IF (N.GT.0) GO TO 30
@@ -106,48 +106,48 @@ C
 C COMPUTE GAMMA(X) FOR X .LT. 1.0
 C
       N = -N
-      IF (X .EQ. 0.D0) CALL XERMSG ('SLATEC', 'DGAMMA', 'X IS 0', 4, 2)
+      IF (X .EQ. 0.D0) CALL XERMSG ('SLATEC', 'dgamm0', 'X IS 0', 4, 2)
       IF (X .LT. 0.0 .AND. X+N-2 .EQ. 0.D0) CALL XERMSG ('SLATEC',
-     +   'DGAMMA', 'X IS A NEGATIVE INTEGER', 4, 2)
+     +   'dgamm0', 'X IS A NEGATIVE INTEGER', 4, 2)
       IF (X .LT. (-0.5D0) .AND. ABS((X-AINT(X-0.5D0))/X) .LT. DXREL)
-     +   CALL XERMSG ('SLATEC', 'DGAMMA',
+     +   CALL XERMSG ('SLATEC', 'dgamm0',
      +   'ANSWER LT HALF PRECISION BECAUSE X TOO NEAR NEGATIVE INTEGER',
      +   1, 1)
 C
       DO 20 I=1,N
-        DGAMMA = DGAMMA/(X+I-1 )
+        dgamm0 = dgamm0/(X+I-1 )
  20   CONTINUE
       RETURN
 C
 C GAMMA(X) FOR X .GE. 2.0 AND X .LE. 10.0
 C
  30   DO 40 I=1,N
-        DGAMMA = (Y+I) * DGAMMA
+        dgamm0 = (Y+I) * dgamm0
  40   CONTINUE
       RETURN
 C
 C GAMMA(X) FOR ABS(X) .GT. 10.0.  RECALL Y = ABS(X).
 C
- 50   IF (X .GT. XMAX) CALL XERMSG ('SLATEC', 'DGAMMA',
+ 50   IF (X .GT. XMAX) CALL XERMSG ('SLATEC', 'dgamm0',
      +   'X SO BIG GAMMA OVERFLOWS', 3, 2)
 C
-      DGAMMA = 0.D0
-      IF (X .LT. XMIN) CALL XERMSG ('SLATEC', 'DGAMMA',
+      dgamm0 = 0.D0
+      IF (X .LT. XMIN) CALL XERMSG ('SLATEC', 'dgamm0',
      +   'X SO SMALL GAMMA UNDERFLOWS', 2, 1)
       IF (X.LT.XMIN) RETURN
 C
-      DGAMMA = EXP ((Y-0.5D0)*LOG(Y) - Y + SQ2PIL + D9LGMC(Y) )
+      dgamm0 = EXP ((Y-0.5D0)*LOG(Y) - Y + SQ2PIL + D9LGMC(Y) )
       IF (X.GT.0.D0) RETURN
 C
       IF (ABS((X-AINT(X-0.5D0))/X) .LT. DXREL) CALL XERMSG ('SLATEC',
-     +   'DGAMMA',
+     +   'dgamm0',
      +   'ANSWER LT HALF PRECISION, X TOO NEAR NEGATIVE INTEGER', 1, 1)
 C
       SINPIY = SIN (PI*Y)
-      IF (SINPIY .EQ. 0.D0) CALL XERMSG ('SLATEC', 'DGAMMA',
+      IF (SINPIY .EQ. 0.D0) CALL XERMSG ('SLATEC', 'dgamm0',
      +   'X IS A NEGATIVE INTEGER', 4, 2)
 C
-      DGAMMA = -PI/(Y*SINPIY*DGAMMA)
+      dgamm0 = -PI/(Y*SINPIY*dgamm0)
 C
       RETURN
       END

@@ -17,6 +17,9 @@ is \code{FALSE}.}
 
 \item{...}{Arguments to be passed to or from other methods.}
 }
+\value{
+None.
+}
 \description{
 Summary of \code{expmodel} object, including a mean and quantiles.
 If some estimation has done, also print out estimates, up to \code{nmax}

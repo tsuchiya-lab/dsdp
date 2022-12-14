@@ -120,6 +120,7 @@ gaussmodel <- function(data=data, freq=NULL,
 #' @param estonly Show only the results of estimates. The default value
 #' is `FALSE`.
 #' @param ... Arguments to be passed to or from other methods.
+#' @return None.
 #' @method summary gaussmodel
 #' @examples
 #' ## Create gaussmodel object from a data set mix2gauss$n200

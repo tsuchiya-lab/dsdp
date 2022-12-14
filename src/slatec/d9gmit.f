@@ -1,5 +1,5 @@
 *DECK D9GMIT
-      DOUBLE PRECISION FUNCTION D9GMIT (A, X, ALGAP1, SGNGAM, ALX)
+      DOUBLE PRECISION FUNCTION D9GMIT (A, X, ALGAP1, SGNGAM)
 C***BEGIN PROLOGUE  D9GMIT
 C***SUBSIDIARY
 C***PURPOSE  Compute Tricomi's incomplete Gamma function for small
@@ -25,7 +25,7 @@ C   891214  Prologue converted to Version 4.0 format.  (BAB)
 C   900315  CALLs to XERROR changed to CALLs to XERMSG.  (THJ)
 C   900720  Routine changed from user-callable to subsidiary.  (WRB)
 C***END PROLOGUE  D9GMIT
-      DOUBLE PRECISION A, X, ALGAP1, SGNGAM, ALX, AE, AEPS, ALGS, ALG2,
+      DOUBLE PRECISION A, X, ALGAP1, SGNGAM, AE, AEPS, ALGS, ALG2,
      1  BOT, EPS, FK, S, SGNG2, T, TE, D1MACH, DLNGAM
       LOGICAL FIRST
       SAVE EPS, BOT, FIRST
@@ -40,8 +40,8 @@ C
       IF (X .LE. 0.D0) CALL XERMSG ('SLATEC', 'D9GMIT',
      +   'X SHOULD BE GT 0', 1, 2)
 C
-      MA = A + 0.5D0
-      IF (A.LT.0.D0) MA = A - 0.5D0
+      MA = int(A + 0.5D0)
+      IF (A.LT.0.D0) MA = int(A - 0.5D0)
       AEPS = A - MA
 C
       AE = A

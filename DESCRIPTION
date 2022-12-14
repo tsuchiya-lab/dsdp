@@ -2,29 +2,28 @@ Package: dsdp
 Title: Density Estimation with Semidefinite Programming
 Version: 0.1.0
 Authors@R: c(
-    person("Satoshi", "Kakihara",email = "skakihara@gmail.com",
+    person("Satoshi", "Kakihara",,email = "skakihara@gmail.com",
         role = c("aut", "cre")),
     person("Takashi",  "Tsuchiya", email = "tsuchiya@grips.ac.jp",
         role = "aut"))
-Description: Density estimation with semidefinite programming.
-    The models of probability density functions are Gaussian or exponential
-    distributions with polynomial correction terms. Using a maximum likelihood
-    method, it computes parameters of Gaussian or exponential distributions
-    together with degrees of polynomials by a grid search, and coefficients
-    of polynomials by a variant of semidefinite programming.
-    It adopts Akaike Information Criterion for model selection.
-    See vignettes for tutorials and more information.
+Description: The models of probability density functions are Gaussian or
+    exponential distributions with polynomial correction terms.
+    Using a maximum likelihood method, 'dsdp' computes parameters of Gaussian
+    or exponential distributions together with degrees of polynomials by
+    a grid search, and coefficient of polynomials by a variant of semidefinite
+    programming. It adopts Akaike Information Criterion for model selection.
+    See a vignette for a tutorial and more on our 'Github' repository 
+    <https://github.com/tsuchiya-lab/dsdp/>.
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
 Depends: 
     R (>= 2.10)
 LazyData: true
-Suggests: 
-    bookdown,
+Suggests:
     rmarkdown,
     knitr
-VignetteBuilder: knitr, rmarkdown, bookdown
+VignetteBuilder: knitr, rmarkdown
 Imports: 
     ggplot2,
     rlang,

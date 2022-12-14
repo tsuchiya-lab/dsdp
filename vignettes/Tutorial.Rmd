@@ -14,7 +14,7 @@ output:
   pdf_document:
     toc: false
     number_sections: true
-    citation_package: biblatex
+    # citation_package: biblatex
     keep_tex: true
   html_document:
     number_sections: true
@@ -23,9 +23,9 @@ citecolor: green
 urlcolor: blue
 fontsize: 11pt
 # bibliography: "`r system.file("dsdp.bib", package="dsdp")`"
-bibliography: ["dsdp.bib"]
-biblio-style: alphabetic
-link-citations: yes
+# bibliography: ["dsdp.bib"]
+# biblio-style: alphabetic
+# link-citations: yes
 keep_tex: yes
 keywoards:
   - dsdp
@@ -85,7 +85,7 @@ library(dsdp)
 ```
 This package requires `ggplot2` for displaying histograms and
 density functions.
-`ggplot2` is a part of [`tidyverse`](https://www.tidyverse.org) [@tidyverse2019],
+`ggplot2` is a part of [`tidyverse`](https://www.tidyverse.org),
 a de facto standard for data wrangling in R.
 Our `plot` method returns `ggplot2` objects, so if you plan to add the
 title or change the labels in the graphs, it is better to import `ggplot2` too.
@@ -220,7 +220,8 @@ for all of the combinations of the parameter sets
 `deglist`, `mulist`, and `sdlist`, 9 cases in this example.
 By setting `scaling=TRUE`, estimation is done for scaled data,
 not for original data, as mentioned before.
-The result is sorted according to Akaike information criterion(AIC) [@akaike1974new].
+The result is sorted according to
+[Akaike information criterion(AIC)](https://en.wikipedia.org/wiki/Akaike_information_criterion).
 AIC is widely used criterion for model selection so as to avoid overfitting
 by penalizing the number of free parameters.
 

@@ -49,6 +49,7 @@ C***FIRST EXECUTABLE STATEMENT  DCSEVL
       IF (ABS(X) .GT. ONEPL) CALL XERMSG ('SLATEC', 'DCSEVL',
      +   'X OUTSIDE THE INTERVAL (-1,+1)', 1, 1)
 C
+      B2 = 0.0D0
       B1 = 0.0D0
       B0 = 0.0D0
       TWOX = 2.0D0*X

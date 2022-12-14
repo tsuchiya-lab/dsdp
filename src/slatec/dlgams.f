@@ -30,8 +30,8 @@ C***FIRST EXECUTABLE STATEMENT  DLGAMS
       SGNGAM = 1.0D0
       IF (X.GT.0.D0) RETURN
 C
-      INT = MOD (-AINT(X), 2.0D0) + 0.1D0
-      IF (INT.EQ.0) SGNGAM = -1.0D0
+      inta = int(MOD (-AINT(X), 2.0D0) + 0.1D0)
+      IF (inta.EQ.0) SGNGAM = -1.0D0
 C
       RETURN
       END

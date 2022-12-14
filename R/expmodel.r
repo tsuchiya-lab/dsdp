@@ -118,6 +118,7 @@ expmodel <- function(data=data, freq=NULL, stepsize=c(0.5, 0.3)) {
 #' @param estonly Show only the results of estimates. The default value
 #' is `FALSE`.
 #' @param ... Arguments to be passed to or from other methods.
+#' @return None.
 #' @method summary expmodel
 #' @examples
 #' ## Create expmodel object from a data set mixexpgamma$n200
@@ -412,7 +413,7 @@ plot.expmodel <- function(x, cum=FALSE, nmax=4, graphs=NULL, bins=40,
 #' ## Create an expmodel object
 #' emodel <- expmodel(mixexpgamma$n200)
 #' ## Estimate a model with parameters
-#' emodel <- estimate(emodel, c(4,5,6), c(0.25, 0.5, 1, 2, 4))
+#' emodel <- estimate(emodel, deglist=c(4,5), lmdlist=c(0.5, 1, 2))
 #' @seealso [expmodel()] [summary.expmodel()] [plot.expmodel()]
 #' @method estimate expmodel
 #' @export
@@ -751,7 +752,7 @@ func.expmodel <- function(model, x, cdf=FALSE, n=1, ...) {
 #'
 #' @description Estimate coefficients of a polynomial in Exponential-based
 #' model:
-#' \deqn{\text{poly}(x; \alpha) \mathrm{Exp}(x; \lambda)},
+#' \deqn{\mathrm{poly}(x; \alpha) \mathrm{Exp}(x; \lambda)},
 #' where \eqn{\alpha} is a coefficient vector, \eqn{\lambda} is a rate
 #' parameter of an exponential distribution:
 #' \deqn{\mathrm{Exp}(x; \lambda) := \lambda e^{-\lambda x}}.

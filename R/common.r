@@ -115,7 +115,8 @@ histmean <- function(data, freq = NULL) .Call(rhistmean_, data, freq)
 
 
 #' printf
-#' @param ... Any number of arguments to be printed
+#' @param ... Any number of arguments to be printed.
+#' @return None.
 #' @export
 printf <- function(...) cat(sprintf(...))
 

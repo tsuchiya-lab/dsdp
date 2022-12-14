@@ -46,7 +46,7 @@ C   891214  Prologue converted to Version 4.0 format.  (BAB)
 C   900510  Change call to XERRWV to XERMSG.  (RWC)
 C   920501  Reformatted the REFERENCES section.  (WRB)
 C***END PROLOGUE  XSETF
-      CHARACTER *8 XERN1
+      CHARACTER  XERN1*8
 C***FIRST EXECUTABLE STATEMENT  XSETF
       IF (ABS(KONTRL) .GT. 2) THEN
 !         WRITE (XERN1, '(I8)') KONTRL

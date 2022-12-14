@@ -93,7 +93,7 @@ C
       INTEGER IMACH(16),OUTPUT
       SAVE IMACH
       EQUIVALENCE (IMACH(4),OUTPUT)
-C
+      
 C     MACHINE CONSTANTS FOR THE AMIGA
 C     ABSOFT COMPILER
 C
@@ -872,6 +872,7 @@ C     DATA IMACH(14) /         56 /
 C     DATA IMACH(15) /       -127 /
 C     DATA IMACH(16) /        127 /
 C
+      i1mach = 0
 C***FIRST EXECUTABLE STATEMENT  I1MACH
       IF (I .LT. 1  .OR.  I .GT. 16) GO TO 10
 C

@@ -17,6 +17,9 @@ is \code{FALSE}.}
 
 \item{...}{Arguments to be passed to or from other methods.}
 }
+\value{
+None.
+}
 \description{
 Summary of \code{gaussmodel} object, including a mean and
 a standard deviation and quantiles.

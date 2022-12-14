@@ -21,8 +21,8 @@ C   890531  REVISION DATE from Version 3.2
 C   891214  Prologue converted to Version 4.0 format.  (BAB)
 C   900727  Added EXTERNAL statement.  (WRB)
 C***END PROLOGUE  DGAMR
-      DOUBLE PRECISION X, ALNGX, SGNGX, DGAMMA
-      EXTERNAL DGAMMA
+      DOUBLE PRECISION X, ALNGX, SGNGX, dgamm0
+      EXTERNAL dgamm0
 C***FIRST EXECUTABLE STATEMENT  DGAMR
       DGAMR = 0.0D0
       IF (X.LE.0.0D0 .AND. AINT(X).EQ.X) RETURN
@@ -30,7 +30,7 @@ C
       CALL XGETF (IROLD)
       CALL XSETF (1)
       IF (ABS(X).GT.10.0D0) GO TO 10
-      DGAMR = 1.0D0/DGAMMA(X)
+      DGAMR = 1.0D0/dgamm0(X)
       CALL XERCLR
       CALL XSETF (IROLD)
       RETURN

@@ -51,7 +51,7 @@ Then it sorts the results by AIC.
 ## Create an expmodel object
 emodel <- expmodel(mixexpgamma$n200)
 ## Estimate a model with parameters
-emodel <- estimate(emodel, c(4,5,6), c(0.25, 0.5, 1, 2, 4))
+emodel <- estimate(emodel, deglist=c(4,5), lmdlist=c(0.5, 1, 2))
 }
 \seealso{
 \code{\link[=expmodel]{expmodel()}} \code{\link[=summary.expmodel]{summary.expmodel()}} \code{\link[=plot.expmodel]{plot.expmodel()}}

@@ -7,7 +7,10 @@
 printf(...)
 }
 \arguments{
-\item{...}{Any number of arguments to be printed}
+\item{...}{Any number of arguments to be printed.}
+}
+\value{
+None.
 }
 \description{
 printf

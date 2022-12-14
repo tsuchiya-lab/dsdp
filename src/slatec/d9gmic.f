@@ -44,7 +44,7 @@ C
       IF (X .LE. 0.D0) CALL XERMSG ('SLATEC', 'D9GMIC',
      +   'X MUST BE GT ZERO', 3, 2)
 C
-      M = -(A - 0.5D0)
+      M = int(-(A - 0.5D0))
       FM = M
 C
       TE = 1.0D0

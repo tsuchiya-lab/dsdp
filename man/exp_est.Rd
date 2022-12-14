@@ -33,7 +33,7 @@ A \code{list}  of \verb{deg, lmd, aic, accuracy, coefficient vector}
 \description{
 Estimate coefficients of a polynomial in Exponential-based
 model:
-\deqn{\text{poly}(x; \alpha) \mathrm{Exp}(x; \lambda)},
+\deqn{\mathrm{poly}(x; \alpha) \mathrm{Exp}(x; \lambda)},
 where \eqn{\alpha} is a coefficient vector, \eqn{\lambda} is a rate
 parameter of an exponential distribution:
 \deqn{\mathrm{Exp}(x; \lambda) := \lambda e^{-\lambda x}}.

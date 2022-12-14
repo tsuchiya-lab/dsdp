@@ -32,7 +32,7 @@ RETURN:
 */
 double momentGaussDist(const CLP_INT n, const double mu, const double sig)
 {
-    double dd;
+    double dd = 0.0;
 
     if (n == 0)
     {
@@ -152,14 +152,14 @@ double momentGaussDist(const CLP_INT n, const double mu, const double sig)
     {
         dd = pow(mu, 28) + 378 * pow(mu, 26) * pow(sig, 2) + 61425 * pow(mu, 24) * pow(sig, 4) + 5651100 * pow(mu, 22) * pow(sig, 6) + 326351025 * pow(mu, 20) * pow(sig, 8) + 12401338950 * pow(mu, 18) * pow(sig, 10) + 316234143225 * pow(mu, 16) * pow(sig, 12) + 5421156741000 * pow(mu, 14) * pow(sig, 14) + 61665657928875 * pow(mu, 12) * pow(sig, 16) + 452214824811750 * pow(mu, 10) * pow(sig, 18) + 2034966711652875 * pow(mu, 8) * pow(sig, 20) + 5179915266025500 * pow(mu, 6) * pow(sig, 22) + 6474894082531875 * pow(mu, 4) * pow(sig, 24) + 2988412653476250 * pow(mu, 2) * pow(sig, 26) + 213458046676875 * pow(sig, 28);
     }
-    else if (n == 29)
-    {
-        dd = pow(mu, 29) + 406 * pow(mu, 27) * pow(sig, 2) + 71253 * pow(mu, 25) * pow(sig, 4) + 7125300 * pow(mu, 23) * pow(sig, 6) + 450675225 * pow(mu, 21) * pow(sig, 8) + 18928359450 * pow(mu, 19) * pow(sig, 10) + 539458244325 * pow(mu, 17) * pow(sig, 12) + 10480903032600 * pow(mu, 15) * pow(sig, 14) + 137561852302875 * pow(mu, 13) * pow(sig, 16) + 1192202719958250 * pow(mu, 11) * pow(sig, 18) + 6557114959770375 * pow(mu, 9) * pow(sig, 20) + 21459648959248500 * pow(mu, 7) * pow(sig, 22) + 37554385678684875 * pow(mu, 5) * pow(sig, 24) + 28887988983603750 * pow(mu, 3) * pow(sig, 26) + 6190283353629375 * mu * pow(sig, 28);
-    }
-    else if (n == 30)
-    {
-        dd = pow(mu, 30) + 435 * pow(mu, 28) * pow(sig, 2) + 82215 * pow(mu, 26) * pow(sig, 4) + 8906625 * pow(mu, 24) * pow(sig, 6) + 614557125 * pow(mu, 22) * pow(sig, 8) + 28392539175 * pow(mu, 20) * pow(sig, 10) + 899097073875 * pow(mu, 18) * pow(sig, 12) + 19651693186125 * pow(mu, 16) * pow(sig, 14) + 294775397791875 * pow(mu, 14) * pow(sig, 16) + 2980506799895625 * pow(mu, 12) * pow(sig, 18) + 19671344879311125 * pow(mu, 10) * pow(sig, 20) + 80473683597181875 * pow(mu, 8) * pow(sig, 22) + 187771928393424375 * pow(mu, 6) * pow(sig, 24) + 216659917377028125 * pow(mu, 4) * pow(sig, 26) + 92854250304440625 * pow(mu, 2) * pow(sig, 28) + 6190283353629375 * pow(sig, 30);
-    }
+    // else if (n == 29)
+    // {
+    //     dd = pow(mu, 29) + 406 * pow(mu, 27) * pow(sig, 2) + 71253 * pow(mu, 25) * pow(sig, 4) + 7125300 * pow(mu, 23) * pow(sig, 6) + 450675225 * pow(mu, 21) * pow(sig, 8) + 18928359450 * pow(mu, 19) * pow(sig, 10) + 539458244325 * pow(mu, 17) * pow(sig, 12) + 10480903032600 * pow(mu, 15) * pow(sig, 14) + 137561852302875 * pow(mu, 13) * pow(sig, 16) + 1192202719958250 * pow(mu, 11) * pow(sig, 18) + 6557114959770375 * pow(mu, 9) * pow(sig, 20) + 21459648959248500 * pow(mu, 7) * pow(sig, 22) + 37554385678684875 * pow(mu, 5) * pow(sig, 24) + 28887988983603750 * pow(mu, 3) * pow(sig, 26) + 6190283353629375 * mu * pow(sig, 28);
+    // }
+    // else if (n == 30)
+    // {
+    //     dd = pow(mu, 30) + 435 * pow(mu, 28) * pow(sig, 2) + 82215 * pow(mu, 26) * pow(sig, 4) + 8906625 * pow(mu, 24) * pow(sig, 6) + 614557125 * pow(mu, 22) * pow(sig, 8) + 28392539175 * pow(mu, 20) * pow(sig, 10) + 899097073875 * pow(mu, 18) * pow(sig, 12) + 19651693186125 * pow(mu, 16) * pow(sig, 14) + 294775397791875 * pow(mu, 14) * pow(sig, 16) + 2980506799895625 * pow(mu, 12) * pow(sig, 18) + 19671344879311125 * pow(mu, 10) * pow(sig, 20) + 80473683597181875 * pow(mu, 8) * pow(sig, 22) + 187771928393424375 * pow(mu, 6) * pow(sig, 24) + 216659917377028125 * pow(mu, 4) * pow(sig, 26) + 92854250304440625 * pow(mu, 2) * pow(sig, 28) + 6190283353629375 * pow(sig, 30);
+    // }
     return dd;
 }
 
